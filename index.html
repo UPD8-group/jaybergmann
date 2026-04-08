@@ -5,104 +5,550 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jay Bergmann - Web Design & Author</title>
     <style>
-        /* Classic 90s Navy Blue Background */
+        /* === RESET & BASE === */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* Classic 90s tiled starfield background */
         body {
-            background-color: #000080; 
+            background-color: #000080;
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, #ffffff44, transparent),
+                radial-gradient(1px 1px at 60px 80px, #ffffff33, transparent),
+                radial-gradient(1px 1px at 120px 20px, #ffffff22, transparent),
+                radial-gradient(1px 1px at 180px 60px, #ffffff44, transparent),
+                radial-gradient(1px 1px at 40px 120px, #ffffff33, transparent),
+                radial-gradient(1px 1px at 160px 140px, #ffffff22, transparent);
+            background-size: 200px 160px;
             color: #FFFFFF;
             font-family: "Courier New", Courier, monospace;
-            margin: 20px;
-        }
-
-        /* The main content box designed to look like a Windows 95 application */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #C0C0C0; /* Classic Grey */
-            color: #000000;
-            border: 4px outset #FFFFFF;
             padding: 20px;
+            min-height: 100vh;
         }
 
-        h1, h2 {
-            text-align: center;
-            color: #000080;
+        /* Windows 95 application frame */
+        .window {
+            max-width: 780px;
+            margin: 0 auto;
+            background-color: #C0C0C0;
+            color: #000000;
+            border: 2px solid #000000;
+            border-top-color: #FFFFFF;
+            border-left-color: #FFFFFF;
+            box-shadow: 
+                inset 1px 1px 0 #DFDFDF,
+                inset -1px -1px 0 #808080,
+                2px 2px 8px rgba(0,0,0,0.5);
         }
 
-        /* 3D-looking horizontal lines */
+        /* Title bar */
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084D0);
+            color: #FFFFFF;
+            padding: 4px 6px;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+        .title-bar-text { display: flex; align-items: center; gap: 6px; }
+        .title-bar-controls { display: flex; gap: 2px; }
+        .title-bar-controls span {
+            width: 16px; height: 14px; background: #C0C0C0;
+            border: 1px solid #000; border-top-color: #FFF; border-left-color: #FFF;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 9px; line-height: 1; font-family: "Courier New", monospace;
+            font-weight: bold; cursor: default;
+        }
+
+        .content { padding: 20px; }
+
+        /* Marquee banner */
+        .marquee-wrap {
+            background-color: #FFFF00; color: #000000; font-weight: bold;
+            padding: 6px 10px; margin-bottom: 16px;
+            border: 2px solid #000000; font-size: 14px; overflow: hidden;
+        }
+        marquee { display: block; }
+
+        h1 {
+            text-align: center; color: #000080; font-size: 28px;
+            letter-spacing: 4px; margin-bottom: 4px;
+            text-shadow: 2px 2px 0 #A0A0A0;
+        }
+
+        .tagline {
+            text-align: center; font-size: 14px; color: #333;
+            margin-bottom: 16px; font-style: italic;
+        }
+
+        /* 3D horizontal rules */
         hr {
-            border: 0;
-            border-top: 2px solid #808080;
-            border-bottom: 2px solid #FFFFFF;
+            border: 0; height: 4px;
+            border-top: 2px solid #808080; border-bottom: 2px solid #FFFFFF;
+            margin: 16px 0;
         }
 
-        /* Inner content boxes with inset borders */
+        /* Rainbow divider */
+        .rainbow-hr {
+            height: 6px;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            border: none; margin: 16px 0;
+        }
+
+        /* Inset content panels */
         .box {
-            border: 2px inset #FFFFFF;
-            padding: 15px;
-            margin-top: 15px;
-            background-color: #FFFFFF;
+            border: 2px solid #000;
+            border-top-color: #808080; border-left-color: #808080;
+            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
+            padding: 16px; margin-top: 16px; background-color: #FFFFFF;
         }
 
-        /* Styling for 90s-style clickable buttons */
+        .box h2 {
+            text-align: center; color: #000080; font-size: 18px;
+            margin-bottom: 10px; border-bottom: 1px dashed #808080;
+            padding-bottom: 8px;
+        }
+
+        .box p, .box li { font-size: 13px; line-height: 1.6; }
+        .box ul { margin: 10px 0 10px 30px; }
+        .box li { margin-bottom: 4px; }
+        .box li::marker { color: #000080; }
+
+        /* Price callout */
+        .price {
+            text-align: center; font-size: 20px; color: #CC0000;
+            font-weight: bold; margin: 10px 0;
+            animation: blink 1.2s step-end infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Win95 Buttons */
         .btn {
             background-color: #C0C0C0;
-            border: 3px outset #FFFFFF;
-            padding: 8px 20px;
-            text-decoration: none;
-            color: #000000;
-            font-weight: bold;
-            display: inline-block;
+            border: 2px solid #000;
+            border-top-color: #FFFFFF; border-left-color: #FFFFFF;
+            border-bottom-color: #000; border-right-color: #000;
+            padding: 6px 20px; text-decoration: none; color: #000000;
+            font-weight: bold; font-family: "Courier New", Courier, monospace;
+            font-size: 13px; display: inline-block; cursor: pointer;
+            box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #DFDFDF;
         }
-
-        /* Makes the button look 'pressed' when clicked */
         .btn:active {
-            border-style: inset;
+            border-top-color: #000; border-left-color: #000;
+            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
+            box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #DFDFDF;
+            padding: 7px 19px 5px 21px;
+        }
+        .btn:hover { background-color: #D0D0D0; }
+        .btn-row { text-align: center; margin-top: 14px; }
+
+        /* Checklist style for services */
+        .services-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 6px 20px; margin: 12px 0; padding: 0; list-style: none;
+        }
+        .services-grid li { padding-left: 20px; position: relative; font-size: 13px; }
+        .services-grid li::before {
+            content: "✔"; position: absolute; left: 0;
+            color: #008000; font-weight: bold;
         }
 
-        /* The iconic scrolling text bar */
-        marquee {
-            background-color: #FFFF00; /* Bright Yellow */
-            color: #000000;
+        /* Links */
+        a { color: #0000FF; }
+        a:visited { color: #800080; }
+        a:hover { color: #FF0000; }
+
+        /* ===== PORTFOLIO CARDS ===== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .project-card {
+            border: 2px solid #000;
+            border-top-color: #808080; border-left-color: #808080;
+            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
+            background: #F5F5F5;
+            padding: 14px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .project-card .pixel-icon {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            border: 2px solid #000;
+            border-top-color: #808080; border-left-color: #808080;
+            border-bottom-color: #DFDFDF; border-right-color: #DFDFDF;
+            background: #C0C0C0;
+        }
+
+        .project-card .project-info { flex: 1; min-width: 0; }
+
+        .project-card .project-name {
+            font-size: 15px; font-weight: bold; color: #000080;
+            margin-bottom: 4px;
+        }
+
+        .project-card .project-desc {
+            font-size: 12px; line-height: 1.5; color: #333;
+            margin-bottom: 8px;
+        }
+
+        .project-card .project-link { font-size: 12px; }
+
+        /* Status bar */
+        .status-bar {
+            background: #C0C0C0; border-top: 2px solid #808080;
+            padding: 3px 8px; font-size: 11px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .status-bar .status-section {
+            border: 1px solid #000;
+            border-top-color: #808080; border-left-color: #808080;
+            border-bottom-color: #FFF; border-right-color: #FFF;
+            padding: 2px 8px; background: #C0C0C0;
+        }
+
+        /* Visitor counter */
+        .counter {
+            text-align: center; margin: 16px 0 8px; font-size: 12px; color: #333;
+        }
+        .counter-digits { display: inline-flex; gap: 1px; margin-left: 4px; }
+        .counter-digits span {
+            background: #000; color: #00FF00; padding: 2px 5px;
+            font-size: 14px; font-family: "Courier New", monospace;
+            font-weight: bold; border: 1px inset #808080;
+        }
+
+        /* Under construction badge */
+        .construction {
+            text-align: center; margin: 12px 0 4px; font-size: 12px;
+            color: #CC6600; font-weight: bold; letter-spacing: 1px;
+        }
+        .construction span { animation: blink 1s step-end infinite; }
+
+        /* Footer */
+        .footer { text-align: center; font-size: 11px; color: #555; padding: 8px; }
+        .footer a { font-size: 11px; }
+
+        /* Webring nav */
+        .webring {
+            text-align: center; margin: 10px 0 4px; font-size: 11px; color: #555;
+        }
+        .webring a { font-size: 11px; margin: 0 4px; }
+
+        /* "NEW!" badge */
+        .badge-new {
+            display: inline-block;
+            background: #FF0000;
+            color: #FFFFFF;
+            font-size: 9px;
             font-weight: bold;
-            padding: 5px;
-            margin-bottom: 15px;
-            border: 2px solid #000000;
+            padding: 1px 5px;
+            margin-left: 6px;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            letter-spacing: 1px;
+        }
+
+        /* ===== WIN95 FORM STYLES ===== */
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            font-family: "Courier New", Courier, monospace;
+            color: #000;
+            margin-bottom: 3px;
+        }
+        .form-input {
+            width: 100%;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 13px;
+            padding: 5px 6px;
+            background: #FFFFFF;
+            color: #000;
+            border: 2px solid #DFDFDF;
+            border-top-color: #808080;
+            border-left-color: #808080;
+            border-bottom-color: #FFFFFF;
+            border-right-color: #FFFFFF;
+            box-shadow: inset 1px 1px 0 #000;
+            outline: none;
+        }
+        .form-input:focus {
+            background: #FFFFEE;
+        }
+        .form-input::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+        .form-textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 8px; }
+            .content { padding: 12px; }
+            h1 { font-size: 22px; letter-spacing: 2px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .title-bar { font-size: 11px; }
+            .project-card { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <marquee>Welcome to jaybergmann.com! Custom Websites | AI Chatbots | Debut Author</marquee>
-    
-    <h1>JAY BERGMANN</h1>
-    <hr>
-    <p align="center"><strong>I build websites for small businesses. Set it and forget it.</strong></p>
-    
-    <div class="box">
-        <h2>💻 Web Development Services</h2>
-        <p>Everything you need for just <strong>$100 a month</strong>. No hidden fees. Here is exactly what is included:</p>
-        <ul>
-            <li>Custom Website Creation</li>
-            <li>Reliable Web Hosting</li>
-            <li>Unlimited Updates</li>
-            <li>Custom AI Chatbot (including education on how to use it)</li>
-        </ul>
-        <p><strong>Example of my work:</strong> <br>
-        Check out <a href="https://santasecret.com.au" target="_blank">Santa Secret</a>. I even built a custom falling snow effect for this Christmas shop!</p>
-    </div>
-
-    <div class="box">
-        <h2>📚 I'm Also a Debut Author!</h2>
-        <p>When I'm not coding custom sites or training AI chatbots, I write. My very first book is officially published and available on Amazon Kindle.</p>
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" class="btn">Click Here to View My Book</a>
+<div class="window">
+    <!-- Win95 Title Bar -->
+    <div class="title-bar">
+        <span class="title-bar-text">📁 jaybergmann.com - Internet Explorer</span>
+        <div class="title-bar-controls">
+            <span>_</span><span>□</span><span>×</span>
         </div>
     </div>
 
-    <hr>
-    <p align="center"><small>&copy; 2026 Jay Bergmann. All rights reserved. Best viewed in Netscape Navigator (just kidding).</small></p>
-</div>
+    <div class="content">
+        <!-- Scrolling Banner -->
+        <div class="marquee-wrap">
+            <marquee scrollamount="4">★ Welcome to jaybergmann.com! ★ Custom Websites &amp; AI Chatbots for Small Business ★ Debut Sci-Fi Author ★ Set It and Forget It! ★</marquee>
+        </div>
 
-</body>
-</html>
+        <h1>JAY BERGMANN</h1>
+        <p class="tagline">Web Design &bull; AI Chatbots &bull; Author</p>
+
+        <div class="rainbow-hr"></div>
+
+        <!-- ===== SERVICES ===== -->
+        <div class="box">
+            <h2>💻 Web Development Services</h2>
+            <p>Everything your small business needs. One flat price. No surprises.</p>
+            <p class="price">★ $100/month ★</p>
+            <p style="text-align:center; font-size:12px; color:#555; margin-bottom:10px;">No lock-in contracts. No hidden fees. Cancel any time.</p>
+
+            <ul class="services-grid">
+                <li>Custom Website Creation</li>
+                <li>Reliable Web Hosting</li>
+                <li>Unlimited Updates</li>
+                <li>Custom AI Chatbot</li>
+            </ul>
+
+        </div>
+
+        <!-- ===== CONTACT FORM ===== -->
+        <div class="box">
+            <h2>📧 Get In Touch</h2>
+            <p style="text-align:center; margin-bottom:12px;">Interested? Fill out this form and I'll get back to you.</p>
+
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact">
+                <p class="hidden-field" style="display:none;">
+                    <label>Don't fill this out: <input name="bot-field"></label>
+                </p>
+
+                <div class="form-group">
+                    <label class="form-label" for="name">Your Name:</label>
+                    <input class="form-input" type="text" id="name" name="name" required placeholder="e.g. Kim Barlow">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Your Email:</label>
+                    <input class="form-input" type="email" id="email" name="email" required placeholder="e.g. kim@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="business">Business Name (optional):</label>
+                    <input class="form-input" type="text" id="business" name="business" placeholder="e.g. Santa's Secret">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Message:</label>
+                    <textarea class="form-input form-textarea" id="message" name="message" required placeholder="Tell me a bit about what you need..."></textarea>
+                </div>
+
+                <div class="btn-row">
+                    <button type="submit" class="btn">💾 Send Message</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===== PORTFOLIO ===== -->
+        <div class="box">
+            <h2>🖥️ Things I've Built</h2>
+
+            <div class="portfolio-grid">
+
+                <!-- Santa's Secret -->
+                <div class="project-card">
+                    <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
+                        <!-- Star -->
+                        <rect x="7" y="1" width="2" height="1" fill="#FFD700"/>
+                        <rect x="6" y="2" width="4" height="1" fill="#FFD700"/>
+                        <rect x="7" y="3" width="2" height="1" fill="#FFD700"/>
+                        <!-- Tree layers -->
+                        <rect x="6" y="4" width="4" height="1" fill="#228B22"/>
+                        <rect x="5" y="5" width="6" height="2" fill="#228B22"/>
+                        <rect x="4" y="7" width="8" height="2" fill="#228B22"/>
+                        <rect x="3" y="9" width="10" height="2" fill="#228B22"/>
+                        <!-- Ornaments -->
+                        <rect x="6" y="5" width="1" height="1" fill="#FF0000"/>
+                        <rect x="9" y="6" width="1" height="1" fill="#FFD700"/>
+                        <rect x="5" y="8" width="1" height="1" fill="#00BFFF"/>
+                        <rect x="8" y="7" width="1" height="1" fill="#FF0000"/>
+                        <rect x="10" y="9" width="1" height="1" fill="#FFD700"/>
+                        <rect x="4" y="10" width="1" height="1" fill="#FF0000"/>
+                        <!-- Trunk -->
+                        <rect x="7" y="11" width="2" height="2" fill="#8B4513"/>
+                        <!-- Snow ground -->
+                        <rect x="0" y="13" width="16" height="3" fill="#E8E8F0"/>
+                        <!-- Snowflakes -->
+                        <rect x="1" y="2" width="1" height="1" fill="#FFFFFF"/>
+                        <rect x="14" y="5" width="1" height="1" fill="#FFFFFF"/>
+                        <rect x="13" y="1" width="1" height="1" fill="#FFFFFF"/>
+                        <rect x="2" y="8" width="1" height="1" fill="#FFFFFF"/>
+                        <rect x="14" y="10" width="1" height="1" fill="#FFFFFF"/>
+                    </svg>
+                    <div class="project-info">
+                        <div class="project-name">Santa's Secret</div>
+                        <p class="project-desc">Custom website with AI chatbot and falling snow effect for a Canberra Christmas shop.</p>
+                        <a class="project-link" href="https://santasecret.com.au" target="_blank">santasecret.com.au →</a>
+                    </div>
+                </div>
+
+                <!-- HolyShit.app -->
+                <div class="project-card">
+                    <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
+                        <!-- Map pin -->
+                        <rect x="7" y="0" width="2" height="1" fill="#FF4444"/>
+                        <rect x="6" y="1" width="4" height="3" fill="#FF4444"/>
+                        <rect x="7" y="2" width="2" height="1" fill="#FFFFFF"/>
+                        <rect x="7" y="4" width="2" height="1" fill="#FF4444"/>
+                        <rect x="7" y="5" width="1" height="1" fill="#FF4444"/>
+                        <!-- Toilet bowl -->
+                        <rect x="4" y="8" width="8" height="5" fill="#FFFFFF"/>
+                        <rect x="3" y="9" width="1" height="3" fill="#FFFFFF"/>
+                        <rect x="12" y="9" width="1" height="3" fill="#FFFFFF"/>
+                        <!-- Seat -->
+                        <rect x="4" y="7" width="8" height="1" fill="#E8E8E8"/>
+                        <!-- Water -->
+                        <rect x="5" y="9" width="6" height="3" fill="#87CEEB"/>
+                        <rect x="6" y="10" width="2" height="1" fill="#ADD8E6"/>
+                        <!-- Tank -->
+                        <rect x="5" y="5" width="6" height="2" fill="#E0E0E0"/>
+                        <!-- Base -->
+                        <rect x="5" y="13" width="6" height="2" fill="#D8D8D8"/>
+                        <!-- Australia outline hint (green land) -->
+                        <rect x="0" y="14" width="3" height="2" fill="#4CAF50"/>
+                        <rect x="13" y="13" width="3" height="3" fill="#4CAF50"/>
+                    </svg>
+                    <div class="project-info">
+                        <div class="project-name">HolyShit.app <span class="badge-new">NEW!</span></div>
+                        <p class="project-desc">Find the nearest public toilet anywhere in Australia. Over 35,000 facilities mapped from official government data.</p>
+                        <a class="project-link" href="https://holyshit.app" target="_blank">holyshit.app →</a>
+                    </div>
+                </div>
+
+                <!-- Mechanic Frank -->
+                <div class="project-card">
+                    <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
+                        <!-- Car body -->
+                        <rect x="1" y="8" width="14" height="3" fill="#3366CC"/>
+                        <rect x="3" y="6" width="10" height="2" fill="#3366CC"/>
+                        <!-- Roof -->
+                        <rect x="4" y="5" width="8" height="1" fill="#2255AA"/>
+                        <!-- Windshield -->
+                        <rect x="4" y="6" width="4" height="2" fill="#87CEEB"/>
+                        <!-- Rear window -->
+                        <rect x="9" y="6" width="3" height="2" fill="#87CEEB"/>
+                        <!-- Wheels -->
+                        <rect x="2" y="11" width="3" height="3" fill="#333333"/>
+                        <rect x="3" y="12" width="1" height="1" fill="#999999"/>
+                        <rect x="11" y="11" width="3" height="3" fill="#333333"/>
+                        <rect x="12" y="12" width="1" height="1" fill="#999999"/>
+                        <!-- Headlight -->
+                        <rect x="0" y="9" width="1" height="1" fill="#FFFF00"/>
+                        <!-- Tail light -->
+                        <rect x="15" y="9" width="1" height="1" fill="#FF4444"/>
+                        <!-- Magnifying glass (inspection) -->
+                        <rect x="10" y="0" width="4" height="4" fill="transparent"/>
+                        <rect x="11" y="0" width="3" height="1" fill="#C0C0C0"/>
+                        <rect x="10" y="1" width="1" height="2" fill="#C0C0C0"/>
+                        <rect x="14" y="1" width="1" height="2" fill="#C0C0C0"/>
+                        <rect x="11" y="3" width="3" height="1" fill="#C0C0C0"/>
+                        <rect x="11" y="1" width="3" height="2" fill="#ADD8E6"/>
+                        <!-- Magnifying handle -->
+                        <rect x="14" y="3" width="1" height="2" fill="#8B4513"/>
+                        <rect x="15" y="4" width="1" height="1" fill="#8B4513"/>
+                        <!-- Checkmark inside lens -->
+                        <rect x="11" y="2" width="1" height="1" fill="#00FF00"/>
+                        <rect x="12" y="1" width="1" height="1" fill="#00FF00"/>
+                        <rect x="13" y="2" width="1" height="1" fill="#00FF00"/>
+                        <!-- Ground -->
+                        <rect x="0" y="14" width="16" height="2" fill="#444444"/>
+                    </svg>
+                    <div class="project-info">
+                        <div class="project-name">Mechanic Frank <span class="badge-new">NEW!</span></div>
+                        <p class="project-desc">Like having a mechanic in your pocket. Snap a photo of any used car listing and get a full breakdown — what to look for, what to avoid.</p>
+                        <a class="project-link" href="https://mechanicfrank.com" target="_blank">mechanicfrank.com →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== AUTHOR ===== -->
+        <div class="box">
+            <h2>📚 Debut Author</h2>
+            <p>When I'm not building websites or training AI chatbots, I write science fiction. My debut novel <em>The Reset: Book One of the TRUDY Trilogy</em> is out now on Amazon Kindle.</p>
+            <div class="btn-row">
+                <a href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" class="btn">📖 View My Book on Amazon</a>
+            </div>
+        </div>
+
+        <div class="rainbow-hr"></div>
+
+        <!-- Under Construction -->
+        <div class="construction">
+            🚧 <span>SITE UNDER CONSTRUCTION</span> 🚧
+        </div>
+
+        <!-- Visitor Counter -->
+        <div class="counter">
+            You are visitor #
+            <span class="counter-digits">
+                <span>0</span><span>0</span><span>1</span><span>3</span><span>3</span><span>7</span>
+            </span>
+        </div>
+
+        <!-- Faux Webring -->
+        <div class="webring">
+            &lt; <a href="#">Prev</a> |
+            🌐 <strong>Canberra Web Designers Ring</strong> |
+            <a href="#">Next</a> &gt;
+        </div>
+
+        <hr>
+
+        <p class="footer">
+            &copy; 2026 Jay Bergmann. All rights reserved.<br>
+            Best viewed in Netscape Navigator 4.0 at 800&times;600.
+        </p>
+    </div>
+
+    <!-- Status B
