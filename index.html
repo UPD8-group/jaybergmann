@@ -261,43 +261,23 @@
         }
 
         /* ===== WIN95 FORM STYLES ===== */
-        .form-group {
-            margin-bottom: 10px;
-        }
+        .form-group { margin-bottom: 10px; }
         .form-label {
-            display: block;
-            font-size: 13px;
-            font-weight: bold;
+            display: block; font-size: 13px; font-weight: bold;
             font-family: "Courier New", Courier, monospace;
-            color: #000;
-            margin-bottom: 3px;
+            color: #000; margin-bottom: 3px;
         }
         .form-input {
-            width: 100%;
-            font-family: "Courier New", Courier, monospace;
-            font-size: 13px;
-            padding: 5px 6px;
-            background: #FFFFFF;
-            color: #000;
+            width: 100%; font-family: "Courier New", Courier, monospace;
+            font-size: 13px; padding: 5px 6px; background: #FFFFFF; color: #000;
             border: 2px solid #DFDFDF;
-            border-top-color: #808080;
-            border-left-color: #808080;
-            border-bottom-color: #FFFFFF;
-            border-right-color: #FFFFFF;
-            box-shadow: inset 1px 1px 0 #000;
-            outline: none;
+            border-top-color: #808080; border-left-color: #808080;
+            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
+            box-shadow: inset 1px 1px 0 #000; outline: none;
         }
-        .form-input:focus {
-            background: #FFFFEE;
-        }
-        .form-input::placeholder {
-            color: #999;
-            font-style: italic;
-        }
-        .form-textarea {
-            height: 80px;
-            resize: vertical;
-        }
+        .form-input:focus { background: #FFFFEE; }
+        .form-input::placeholder { color: #999; font-style: italic; }
+        .form-textarea { height: 80px; resize: vertical; }
 
         /* Responsive */
         @media (max-width: 600px) {
@@ -338,14 +318,12 @@
             <p>Everything your small business needs. One flat price. No surprises.</p>
             <p class="price">★ $100/month ★</p>
             <p style="text-align:center; font-size:12px; color:#555; margin-bottom:10px;">No lock-in contracts. No hidden fees. Cancel any time.</p>
-
             <ul class="services-grid">
                 <li>Custom Website Creation</li>
                 <li>Reliable Web Hosting</li>
                 <li>Unlimited Updates</li>
                 <li>Custom AI Chatbot</li>
             </ul>
-
         </div>
 
         <!-- ===== CONTACT FORM ===== -->
@@ -355,30 +333,25 @@
 
             <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact">
-                <p class="hidden-field" style="display:none;">
+                <p style="display:none;">
                     <label>Don't fill this out: <input name="bot-field"></label>
                 </p>
-
                 <div class="form-group">
                     <label class="form-label" for="name">Your Name:</label>
                     <input class="form-input" type="text" id="name" name="name" required placeholder="e.g. Bob">
                 </div>
-
                 <div class="form-group">
                     <label class="form-label" for="email">Your Email:</label>
                     <input class="form-input" type="email" id="email" name="email" required placeholder="e.g. someone@somewhere.com">
                 </div>
-
                 <div class="form-group">
                     <label class="form-label" for="business">Business Name (optional):</label>
                     <input class="form-input" type="text" id="business" name="business" placeholder="e.g. Bobs Bots">
                 </div>
-
                 <div class="form-group">
                     <label class="form-label" for="message">Message:</label>
                     <textarea class="form-input form-textarea" id="message" name="message" required placeholder="Tell me a bit about what you need..."></textarea>
                 </div>
-
                 <div class="btn-row">
                     <button type="submit" class="btn">💾 Send Message</button>
                 </div>
@@ -395,27 +368,21 @@
                 <div class="project-card">
                     <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
-                        <!-- Star -->
                         <rect x="7" y="1" width="2" height="1" fill="#FFD700"/>
                         <rect x="6" y="2" width="4" height="1" fill="#FFD700"/>
                         <rect x="7" y="3" width="2" height="1" fill="#FFD700"/>
-                        <!-- Tree layers -->
                         <rect x="6" y="4" width="4" height="1" fill="#228B22"/>
                         <rect x="5" y="5" width="6" height="2" fill="#228B22"/>
                         <rect x="4" y="7" width="8" height="2" fill="#228B22"/>
                         <rect x="3" y="9" width="10" height="2" fill="#228B22"/>
-                        <!-- Ornaments -->
                         <rect x="6" y="5" width="1" height="1" fill="#FF0000"/>
                         <rect x="9" y="6" width="1" height="1" fill="#FFD700"/>
                         <rect x="5" y="8" width="1" height="1" fill="#00BFFF"/>
                         <rect x="8" y="7" width="1" height="1" fill="#FF0000"/>
                         <rect x="10" y="9" width="1" height="1" fill="#FFD700"/>
                         <rect x="4" y="10" width="1" height="1" fill="#FF0000"/>
-                        <!-- Trunk -->
                         <rect x="7" y="11" width="2" height="2" fill="#8B4513"/>
-                        <!-- Snow ground -->
                         <rect x="0" y="13" width="16" height="3" fill="#E8E8F0"/>
-                        <!-- Snowflakes -->
                         <rect x="1" y="2" width="1" height="1" fill="#FFFFFF"/>
                         <rect x="14" y="5" width="1" height="1" fill="#FFFFFF"/>
                         <rect x="13" y="1" width="1" height="1" fill="#FFFFFF"/>
@@ -424,8 +391,39 @@
                     </svg>
                     <div class="project-info">
                         <div class="project-name">Santa's Secret</div>
-                        <p class="project-desc">Custom website with AI chatbot and falling snow effect for a local Christmas shop.</p>
+                        <p class="project-desc">Custom website with AI chatbot (Holly) and falling snow for a local Christmas and handcrafted décor shop in Bungendore, NSW.</p>
                         <a class="project-link" href="https://santasecret.com.au" target="_blank">santasecret.com.au →</a>
+                    </div>
+                </div>
+
+                <!-- Say G'day -->
+                <div class="project-card">
+                    <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
+                        <!-- Chat bubble -->
+                        <rect x="2" y="3" width="12" height="8" fill="#00AA44"/>
+                        <rect x="1" y="4" width="1" height="6" fill="#00AA44"/>
+                        <rect x="14" y="4" width="1" height="6" fill="#00AA44"/>
+                        <rect x="2" y="2" width="12" height="1" fill="#00AA44"/>
+                        <!-- Tail -->
+                        <rect x="3" y="11" width="1" height="1" fill="#00AA44"/>
+                        <rect x="3" y="12" width="1" height="1" fill="#00AA44"/>
+                        <rect x="4" y="12" width="1" height="1" fill="#00AA44"/>
+                        <!-- Chat dots -->
+                        <rect x="4" y="6" width="2" height="2" fill="#FFFFFF"/>
+                        <rect x="7" y="6" width="2" height="2" fill="#FFFFFF"/>
+                        <rect x="10" y="6" width="2" height="2" fill="#FFFFFF"/>
+                        <!-- Stars (AI sparkle) -->
+                        <rect x="13" y="0" width="1" height="1" fill="#FFD700"/>
+                        <rect x="14" y="1" width="1" height="1" fill="#FFD700"/>
+                        <rect x="13" y="2" width="1" height="1" fill="#FFD700"/>
+                        <rect x="0" y="13" width="1" height="1" fill="#FFD700"/>
+                        <rect x="15" y="13" width="1" height="1" fill="#FFD700"/>
+                    </svg>
+                    <div class="project-info">
+                        <div class="project-name">Say G'day <span class="badge-new">NEW!</span></div>
+                        <p class="project-desc">AI chatbot platform for Australian small businesses. Paste your URL — we train a chatbot on your business and give you a one-line embed code. Your customers get answers 24/7.</p>
+                        <a class="project-link" href="https://saygday.ai" target="_blank">saygday.ai →</a>
                     </div>
                 </div>
 
@@ -433,91 +431,64 @@
                 <div class="project-card">
                     <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
-                        <!-- Map pin -->
                         <rect x="7" y="0" width="2" height="1" fill="#FF4444"/>
                         <rect x="6" y="1" width="4" height="3" fill="#FF4444"/>
                         <rect x="7" y="2" width="2" height="1" fill="#FFFFFF"/>
                         <rect x="7" y="4" width="2" height="1" fill="#FF4444"/>
                         <rect x="7" y="5" width="1" height="1" fill="#FF4444"/>
-                        <!-- Toilet bowl -->
                         <rect x="4" y="8" width="8" height="5" fill="#FFFFFF"/>
                         <rect x="3" y="9" width="1" height="3" fill="#FFFFFF"/>
                         <rect x="12" y="9" width="1" height="3" fill="#FFFFFF"/>
-                        <!-- Seat -->
                         <rect x="4" y="7" width="8" height="1" fill="#E8E8E8"/>
-                        <!-- Water -->
                         <rect x="5" y="9" width="6" height="3" fill="#87CEEB"/>
                         <rect x="6" y="10" width="2" height="1" fill="#ADD8E6"/>
-                        <!-- Tank -->
                         <rect x="5" y="5" width="6" height="2" fill="#E0E0E0"/>
-                        <!-- Base -->
                         <rect x="5" y="13" width="6" height="2" fill="#D8D8D8"/>
-                        <!-- Australia outline hint (green land) -->
                         <rect x="0" y="14" width="3" height="2" fill="#4CAF50"/>
                         <rect x="13" y="13" width="3" height="3" fill="#4CAF50"/>
                     </svg>
                     <div class="project-info">
-                        <div class="project-name">HolyShit.app <span class="badge-new">NEW!</span></div>
+                        <div class="project-name">HolyShit.app</div>
                         <p class="project-desc">Find the nearest public toilet anywhere in Australia. Over 35,000 facilities mapped from official government data.</p>
                         <a class="project-link" href="https://holyshit.app" target="_blank">holyshit.app →</a>
                     </div>
                 </div>
 
-                <!-- Mechanic Frank -->
+                <!-- The Reset -->
                 <div class="project-card">
                     <svg class="pixel-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0" y="0" width="16" height="16" fill="#1a1a2e"/>
-                        <!-- Car body -->
-                        <rect x="1" y="8" width="14" height="3" fill="#3366CC"/>
-                        <rect x="3" y="6" width="10" height="2" fill="#3366CC"/>
-                        <!-- Roof -->
-                        <rect x="4" y="5" width="8" height="1" fill="#2255AA"/>
-                        <!-- Windshield -->
-                        <rect x="4" y="6" width="4" height="2" fill="#87CEEB"/>
-                        <!-- Rear window -->
-                        <rect x="9" y="6" width="3" height="2" fill="#87CEEB"/>
-                        <!-- Wheels -->
-                        <rect x="2" y="11" width="3" height="3" fill="#333333"/>
-                        <rect x="3" y="12" width="1" height="1" fill="#999999"/>
-                        <rect x="11" y="11" width="3" height="3" fill="#333333"/>
-                        <rect x="12" y="12" width="1" height="1" fill="#999999"/>
-                        <!-- Headlight -->
-                        <rect x="0" y="9" width="1" height="1" fill="#FFFF00"/>
-                        <!-- Tail light -->
-                        <rect x="15" y="9" width="1" height="1" fill="#FF4444"/>
-                        <!-- Magnifying glass (inspection) -->
-                        <rect x="10" y="0" width="4" height="4" fill="transparent"/>
-                        <rect x="11" y="0" width="3" height="1" fill="#C0C0C0"/>
-                        <rect x="10" y="1" width="1" height="2" fill="#C0C0C0"/>
-                        <rect x="14" y="1" width="1" height="2" fill="#C0C0C0"/>
-                        <rect x="11" y="3" width="3" height="1" fill="#C0C0C0"/>
-                        <rect x="11" y="1" width="3" height="2" fill="#ADD8E6"/>
-                        <!-- Magnifying handle -->
-                        <rect x="14" y="3" width="1" height="2" fill="#8B4513"/>
-                        <rect x="15" y="4" width="1" height="1" fill="#8B4513"/>
-                        <!-- Checkmark inside lens -->
-                        <rect x="11" y="2" width="1" height="1" fill="#00FF00"/>
-                        <rect x="12" y="1" width="1" height="1" fill="#00FF00"/>
-                        <rect x="13" y="2" width="1" height="1" fill="#00FF00"/>
-                        <!-- Ground -->
-                        <rect x="0" y="14" width="16" height="2" fill="#444444"/>
+                        <rect x="0" y="0" width="16" height="16" fill="#0a0a1a"/>
+                        <!-- Book spine -->
+                        <rect x="2" y="2" width="3" height="12" fill="#4444AA"/>
+                        <!-- Book pages -->
+                        <rect x="5" y="2" width="9" height="12" fill="#EEEECC"/>
+                        <!-- Page lines -->
+                        <rect x="6" y="4" width="7" height="1" fill="#AAAAAA"/>
+                        <rect x="6" y="6" width="7" height="1" fill="#AAAAAA"/>
+                        <rect x="6" y="8" width="5" height="1" fill="#AAAAAA"/>
+                        <rect x="6" y="10" width="7" height="1" fill="#AAAAAA"/>
+                        <!-- Stars on cover -->
+                        <rect x="3" y="4" width="1" height="1" fill="#FFD700"/>
+                        <rect x="3" y="7" width="1" height="1" fill="#FFD700"/>
+                        <rect x="3" y="10" width="1" height="1" fill="#FFD700"/>
+                        <!-- Sci-fi glow -->
+                        <rect x="0" y="0" width="1" height="1" fill="#00FFFF"/>
+                        <rect x="15" y="0" width="1" height="1" fill="#00FFFF"/>
+                        <rect x="0" y="15" width="1" height="1" fill="#00FFFF"/>
+                        <rect x="15" y="15" width="1" height="1" fill="#00FFFF"/>
+                        <!-- Planet -->
+                        <rect x="10" y="3" width="3" height="3" fill="#6644AA"/>
+                        <rect x="9" y="4" width="1" height="1" fill="#6644AA"/>
+                        <rect x="13" y="4" width="1" height="1" fill="#6644AA"/>
+                        <rect x="9" y="5" width="6" height="1" fill="#9977CC"/>
                     </svg>
                     <div class="project-info">
-                        <div class="project-name">Mechanic Frank <span class="badge-new">NEW!</span></div>
-                        <p class="project-desc">Like having a mechanic in your pocket. Snap a photo of any used car listing and get a full breakdown — what to look for, what to avoid.</p>
-                        <a class="project-link" href="https://mechanicfrank.com" target="_blank">mechanicfrank.com →</a>
+                        <div class="project-name">The Reset <span class="badge-new">NEW!</span></div>
+                        <p class="project-desc">My debut sci-fi novel — Book One of the TRUDY Trilogy. Available now on Amazon Kindle. Audiobook in production.</p>
+                        <a class="project-link" href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank">View on Amazon →</a>
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- ===== AUTHOR ===== -->
-        <div class="box">
-            <h2>📚 Debut Author</h2>
-            <p>When I'm not building websites or training AI chatbots, I write science fiction. My debut novel <em>The Reset: Book One of the TRUDY Trilogy</em> is out now on Amazon Kindle.</p>
-            <div class="btn-row">
-                <a href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" class="btn">📖 View My Book on Amazon</a>
             </div>
         </div>
 
@@ -551,4 +522,25 @@
         </p>
     </div>
 
-    <!-- Status B
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span class="status-section">✅ Done</span>
+        <span class="status-section">🌐 Internet zone</span>
+        <span class="status-section" id="status-time"></span>
+    </div>
+</div>
+
+<script>
+    // Live clock in status bar
+    function updateTime() {
+        const now = new Date();
+        const t = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
+        const el = document.getElementById('status-time');
+        if (el) el.textContent = t;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
