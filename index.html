@@ -1,450 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Bergmann — AI Chatbots & Web Design</title>
-    <meta name="description" content="AI chatbots and websites for Australian small businesses.">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jay Bergmann</title>
+<meta name="description" content="Creative soul. Author, musician, and builder of websites and AI tools for small businesses." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f4efe6;
+    --cream-deep: #ece5d6;
+    --ink: #1f1d1a;
+    --ink-soft: #4a463f;
+    --ink-faded: #8a8479;
+    --rust: #b8533a;
+    --rule: #d8d0bf;
+  }
 
-        body {
-            background-color: #000080;
-            background-image:
-                radial-gradient(1px 1px at 20px 30px, #ffffff44, transparent),
-                radial-gradient(1px 1px at 60px 80px, #ffffff33, transparent),
-                radial-gradient(1px 1px at 120px 20px, #ffffff22, transparent),
-                radial-gradient(1px 1px at 180px 60px, #ffffff44, transparent),
-                radial-gradient(1px 1px at 40px 120px, #ffffff33, transparent),
-                radial-gradient(1px 1px at 160px 140px, #ffffff22, transparent);
-            background-size: 200px 160px;
-            color: #FFFFFF;
-            font-family: "Courier New", Courier, monospace;
-            padding: 20px;
-            min-height: 100vh;
-        }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .window {
-            max-width: 780px; margin: 0 auto;
-            background-color: #C0C0C0; color: #000000;
-            border: 2px solid #000000;
-            border-top-color: #FFFFFF; border-left-color: #FFFFFF;
-            box-shadow: inset 1px 1px 0 #DFDFDF, inset -1px -1px 0 #808080, 2px 2px 8px rgba(0,0,0,0.5);
-        }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter Tight', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-        .title-bar {
-            background: linear-gradient(90deg, #000080, #1084D0);
-            color: #FFFFFF; padding: 4px 6px; font-size: 13px; font-weight: bold;
-            display: flex; align-items: center; justify-content: space-between; user-select: none;
-        }
-        .title-bar-controls { display: flex; gap: 2px; }
-        .title-bar-controls span {
-            width: 16px; height: 14px; background: #C0C0C0;
-            border: 1px solid #000; border-top-color: #FFF; border-left-color: #FFF;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 9px; font-weight: bold; cursor: default;
-        }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 0.9s ease-out 0.1s forwards;
+  }
 
-        .content { padding: 20px; }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
 
-        .marquee-wrap {
-            background-color: #FFFF00; color: #000000; font-weight: bold;
-            padding: 6px 10px; margin-bottom: 16px;
-            border: 2px solid #000000; font-size: 14px; overflow: hidden;
-        }
+  .container {
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    flex: 1;
+  }
 
-        h1 {
-            text-align: center; color: #000080; font-size: 28px;
-            letter-spacing: 4px; margin-bottom: 4px; text-shadow: 2px 2px 0 #A0A0A0;
-        }
-        .tagline { text-align: center; font-size: 14px; color: #333; margin-bottom: 16px; font-style: italic; }
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 64px;
+  }
 
-        hr { border: 0; height: 4px; border-top: 2px solid #808080; border-bottom: 2px solid #FFFFFF; margin: 16px 0; }
-        .rainbow-hr { height: 6px; background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet); border: none; margin: 16px 0; }
+  .wordmark {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    font-style: italic;
+  }
 
-        .box {
-            border: 2px solid #000;
-            border-top-color: #808080; border-left-color: #808080;
-            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
-            padding: 16px; margin-top: 16px; background-color: #FFFFFF;
-        }
-        .box h2 {
-            text-align: center; color: #000080; font-size: 18px;
-            margin-bottom: 10px; border-bottom: 1px dashed #808080; padding-bottom: 8px;
-        }
-        .box p, .box li { font-size: 13px; line-height: 1.6; }
-        .box ul { margin: 10px 0 10px 30px; }
-        .box li { margin-bottom: 4px; }
-        .box li::marker { color: #000080; }
+  .location {
+    font-size: 13px;
+    color: var(--ink-faded);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
 
-        /* Say G'day hero box — dark with yellow border */
-        .hero-product {
-            background: #000080; color: #FFFFFF;
-            border: 3px solid #FFFF00;
-            padding: 20px; margin-top: 16px; text-align: center;
-        }
-        .hero-product h2 {
-            color: #FFFF00; font-size: 20px; margin-bottom: 8px;
-            border-bottom: 1px dashed #FFFF0066; padding-bottom: 8px; letter-spacing: 2px;
-        }
-        .hero-product p { font-size: 13px; line-height: 1.7; color: #FFFFFF; margin-bottom: 10px; }
-        .hero-product .highlight { color: #FFFF00; font-weight: bold; }
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+  }
 
-        .how-it-works {
-            background: #000050; border: 1px solid #FFFF0055;
-            padding: 12px 16px; margin: 12px 0; text-align: left;
-        }
-        .how-it-works h3 {
-            color: #FFFF00; font-size: 11px; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 10px;
-        }
-        .step { display: flex; gap: 10px; margin-bottom: 8px; font-size: 12px; line-height: 1.5; color: #DDDDDD; }
-        .step-num { color: #FFFF00; font-weight: bold; flex-shrink: 0; width: 18px; }
+  .hero-text h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
 
-        .features-inline {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4px 16px; margin: 12px 0; text-align: left;
-        }
-        .features-inline li {
-            font-size: 12px; color: #DDDDDD; list-style: none;
-            padding-left: 14px; position: relative; line-height: 1.5;
-        }
-        .features-inline li::before { content: "►"; position: absolute; left: 0; color: #FFFF00; font-size: 9px; top: 3px; }
+  .hero-text h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rust);
+  }
 
-        /* Win95 about section */
-        .about-grid { display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: start; margin-top: 8px; }
-        .about-photo {
-            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
-            object-position: center top;
-            border: 2px solid #000; border-top-color: #808080; border-left-color: #808080;
-            display: block;
-        }
+  .hero-text .lede {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 38ch;
+  }
 
-        /* Services checklist */
-        .services-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 6px 20px; margin: 12px 0; padding: 0; list-style: none;
-        }
-        .services-grid li { padding-left: 20px; position: relative; font-size: 13px; }
-        .services-grid li::before { content: "✔"; position: absolute; left: 0; color: #008000; font-weight: bold; }
+  .photo-frame {
+    aspect-ratio: 4 / 5;
+    background: var(--cream-deep);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 30px 50px -20px rgba(31,29,26,0.18);
+  }
 
-        /* Portfolio cards */
-        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
-        .project-card {
-            border: 2px solid #000;
-            border-top-color: #808080; border-left-color: #808080;
-            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
-            background: #F5F5F5; padding: 12px;
-            display: flex; gap: 14px; align-items: flex-start;
-        }
-        .project-icon {
-            flex-shrink: 0; width: 52px; height: 52px;
-            border: 2px solid #000;
-            border-top-color: #808080; border-left-color: #808080;
-            border-bottom-color: #DFDFDF; border-right-color: #DFDFDF;
-            background: #C0C0C0;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; overflow: hidden;
-        }
-        .project-icon img { width: 52px; height: 52px; object-fit: cover; display: block; }
-        .project-name { font-size: 14px; font-weight: bold; color: #000080; margin-bottom: 3px; }
-        .project-desc { font-size: 12px; line-height: 1.5; color: #333; margin-bottom: 6px; }
-        .project-link { font-size: 12px; color: #0000FF; text-decoration: underline; }
-        .project-link:hover { color: #FF0000; }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-        /* Buttons */
-        .btn {
-            background-color: #C0C0C0;
-            border: 2px solid #000; border-top-color: #FFFFFF; border-left-color: #FFFFFF;
-            border-bottom-color: #000; border-right-color: #000;
-            padding: 6px 20px; text-decoration: none; color: #000000;
-            font-weight: bold; font-family: "Courier New", Courier, monospace;
-            font-size: 13px; display: inline-block; cursor: pointer;
-            box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #DFDFDF;
-        }
-        .btn:hover { background-color: #D0D0D0; }
-        .btn:active {
-            border-top-color: #000; border-left-color: #000;
-            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
-            padding: 7px 19px 5px 21px;
-        }
-        .btn-yellow { background-color: #FFFF00; }
-        .btn-yellow:hover { background-color: #EEEE00; }
-        .btn-row { text-align: center; margin-top: 14px; }
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faded);
+    font-size: 13px;
+    text-align: center;
+    padding: 24px;
+    line-height: 1.5;
+  }
 
-        /* Form */
-        .form-group { margin-bottom: 10px; }
-        .form-label { display: block; font-size: 13px; font-weight: bold; font-family: "Courier New", Courier, monospace; color: #000; margin-bottom: 3px; }
-        .form-input {
-            width: 100%; font-family: "Courier New", Courier, monospace; font-size: 13px;
-            padding: 5px 6px; background: #FFFFFF; color: #000;
-            border: 2px solid #DFDFDF; border-top-color: #808080; border-left-color: #808080;
-            border-bottom-color: #FFFFFF; border-right-color: #FFFFFF;
-            box-shadow: inset 1px 1px 0 #000; outline: none;
-        }
-        .form-input:focus { background: #FFFFEE; }
-        .form-input::placeholder { color: #999; font-style: italic; }
-        .form-textarea { height: 80px; resize: vertical; }
+  .photo-placeholder .ph-icon {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 42px;
+    margin-bottom: 12px;
+    color: var(--ink-faded);
+    opacity: 0.5;
+  }
 
-        /* Badges */
-        .badge-new {
-            display: inline-block; background: #FF0000; color: #FFFFFF;
-            font-size: 9px; font-weight: bold; padding: 1px 5px; margin-left: 6px;
-            animation: blink 1s step-end infinite; vertical-align: middle; letter-spacing: 1px;
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  /* Sections */
+  section {
+    margin-bottom: 80px;
+  }
 
-        /* Testimonial */
-        .testimonial {
-            background: #FFFFCC; border: 2px solid #000;
-            border-top-color: #808080; border-left-color: #808080;
-            padding: 12px 16px; margin: 12px 0;
-            font-size: 12px; font-style: italic; line-height: 1.6; color: #333;
-        }
-        .testimonial .attr { margin-top: 6px; font-style: normal; font-weight: bold; font-size: 11px; color: #000080; }
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-        /* Status bar & footer */
-        .status-bar {
-            background: #C0C0C0; border-top: 2px solid #808080;
-            padding: 3px 8px; font-size: 11px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .status-section {
-            border: 1px solid #000; border-top-color: #808080; border-left-color: #808080;
-            border-bottom-color: #FFF; border-right-color: #FFF;
-            padding: 2px 8px; background: #C0C0C0;
-        }
-        .counter { text-align: center; margin: 16px 0 8px; font-size: 12px; color: #333; }
-        .counter-digits { display: inline-flex; gap: 1px; margin-left: 4px; }
-        .counter-digits span { background: #000; color: #00FF00; padding: 2px 5px; font-size: 14px; font-weight: bold; border: 1px inset #808080; }
-        .construction { text-align: center; margin: 12px 0 4px; font-size: 12px; color: #CC6600; font-weight: bold; }
-        .construction span { animation: blink 1s step-end infinite; }
-        .footer { text-align: center; font-size: 11px; color: #555; padding: 8px; }
-        .footer a { font-size: 11px; color: #0000FF; }
-        .webring { text-align: center; margin: 10px 0 4px; font-size: 11px; color: #555; }
-        .webring a { font-size: 11px; margin: 0 4px; color: #0000FF; }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ink-faded);
+  }
 
-        a { color: #0000FF; }
-        a:visited { color: #800080; }
-        a:hover { color: #FF0000; }
+  /* Work grid */
+  .work {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
 
-        @media (max-width: 600px) {
-            body { padding: 8px; }
-            .content { padding: 12px; }
-            h1 { font-size: 20px; letter-spacing: 2px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .features-inline { grid-template-columns: 1fr; }
-            .about-grid { grid-template-columns: 1fr; }
-            .project-card { flex-direction: column; align-items: center; text-align: center; }
-        }
-    </style>
+  /* When there's an odd card, let it span the full row */
+  .work-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .work-item {
+    background: var(--cream);
+    padding: 32px 28px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.25s ease;
+    min-height: 180px;
+  }
+
+  .work-item:hover {
+    background: var(--cream-deep);
+  }
+
+  .work-item .kind {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    margin-bottom: 14px;
+  }
+
+  .work-item h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+
+  .work-item h3 em {
+    font-style: italic;
+  }
+
+  .work-item p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: auto;
+    padding-bottom: 18px;
+  }
+
+  .work-item .arrow {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--rust);
+    align-self: flex-start;
+    transition: transform 0.25s ease;
+  }
+
+  .work-item:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* About prose */
+  .about-prose {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    max-width: 30em;
+  }
+
+  .about-prose em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  /* Contact */
+  .contact {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact a {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact a:hover {
+    color: var(--rust);
+    border-color: var(--rust);
+  }
+
+  /* Contact form */
+  .contact-form {
+    display: grid;
+    gap: 16px;
+    max-width: 480px;
+  }
+
+  .contact-form .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-form label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    font-weight: 500;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-family: 'Inter Tight', -apple-system, sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 0;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-bottom-color: var(--rust);
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+  }
+
+  .contact-form button {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 6px 0;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    margin-top: 8px;
+    width: fit-content;
+  }
+
+  .contact-form button:hover {
+    color: var(--rust);
+    border-bottom-color: var(--rust);
+  }
+
+  .form-success {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--rust);
+    padding: 16px 0;
+    display: none;
+  }
+
+  .form-success.visible {
+    display: block;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 32px 40px;
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--ink-faded);
+    letter-spacing: 0.04em;
+  }
+
+  footer .links {
+    display: flex;
+    gap: 24px;
+  }
+
+  footer a {
+    color: var(--ink-faded);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  footer a:hover {
+    color: var(--ink);
+  }
+
+  /* Responsive */
+  @media (max-width: 760px) {
+    .container { padding: 36px 24px 60px; }
+    header { margin-bottom: 48px; padding-bottom: 32px; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 72px;
+    }
+    .hero-text { order: 2; }
+    .photo-frame { order: 1; max-width: 320px; }
+    .work { grid-template-columns: 1fr; }
+    section { margin-bottom: 64px; }
+    .about-prose { font-size: 19px; }
+    .contact a { font-size: 24px; }
+    footer {
+      padding: 24px;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+</style>
 </head>
 <body>
 
-<div class="window">
-    <div class="title-bar">
-        <span>📁 jaybergmann.com — Internet Explorer 4.0</span>
-        <div class="title-bar-controls"><span>_</span><span>□</span><span>×</span></div>
+<div class="container">
+
+  <header>
+    <div class="wordmark">Jay Bergmann</div>
+    <div class="location">Canberra, AU</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Creative soul, <em>quiet builder.</em></h1>
+      <p class="lede">
+        I write novels and electronic music in my spare hours, and build websites
+        and AI tools for small businesses the rest of the time.
+      </p>
     </div>
 
-    <div class="content">
+    <div class="photo-frame">
+      <img src="jay.jpg" alt="Jay Bergmann with Luna and Stormy" />
+    </div>
+  </div>
 
-        <div class="marquee-wrap">
-            <marquee scrollamount="4">★ Welcome to jaybergmann.com! ★ AI Chatbots for Australian Small Business ★ Say G'day to your customers 24/7! ★ Retro Web Design Studio ★ Debut Sci-Fi Author ★</marquee>
-        </div>
+  <!-- WORK -->
+  <section>
+    <div class="section-label">Selected Work</div>
+    <div class="work">
 
-        <h1>JAY BERGMANN</h1>
-        <p class="tagline">AI Chatbots &bull; Web Design &bull; Author &bull; Canberra, Australia</p>
+      <a href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" rel="noopener" class="work-item">
+        <div class="kind">Book — Sci-Fi Novel</div>
+        <h3>The Reset</h3>
+        <p>Book One of the TRUDY Trilogy. Published on Amazon, currently self-narrating the audiobook for ACX.</p>
+        <span class="arrow">Read on Amazon →</span>
+      </a>
 
-        <div class="rainbow-hr"></div>
+      <a href="https://open.spotify.com/artist/2vP7XH11A1EhSJnteoeJfT" target="_blank" rel="noopener" class="work-item">
+        <div class="kind">Music — Atmospheric Electronic</div>
+        <h3>Vienna Park</h3>
+        <p>Trance and ambient pieces drawn from forty years of personal poetry. Listen on Spotify.</p>
+        <span class="arrow">Listen →</span>
+      </a>
 
-        <!-- SAY G'DAY HERO -->
-        <div class="hero-product">
-            <h2>🤖 SAY G'DAY — AI CHATBOTS FOR LOCAL BUSINESS</h2>
-            <p>Your customers have questions at 10pm on a Sunday.<br>
-            <span class="highlight">Say G'day puts an AI assistant on your website — trained on your business, answering 24/7.</span></p>
+      <a href="#" class="work-item">
+        <div class="kind">Client Website</div>
+        <h3>Santa's Secret</h3>
+        <p>An interactive website for a boutique bricks-and-mortar Christmas shop in Canberra.</p>
+        <span class="arrow">Visit the site →</span>
+      </a>
 
-            <div class="how-it-works">
-                <h3>⚡ How It Works</h3>
-                <div class="step"><span class="step-num">1.</span><span>Paste your website URL — we scrape and train your chatbot automatically. No forms, no data entry.</span></div>
-                <div class="step"><span class="step-num">2.</span><span>See your chatbot live before you pay a cent. Ask it real questions about your business.</span></div>
-                <div class="step"><span class="step-num">3.</span><span>Subscribe and get one line of code. Paste it on your site — your bot is live.</span></div>
-                <div class="step"><span class="step-num">4.</span><span>Your dashboard shows every conversation. See what your customers are asking.</span></div>
-            </div>
+      <a href="#" class="work-item">
+        <div class="kind">Product — AI Chatbots</div>
+        <h3>SayG'day</h3>
+        <p>An AI chat platform built for Australian small businesses. First live deployment running now.</p>
+        <span class="arrow">Learn more →</span>
+      </a>
 
-            <ul class="features-inline">
-                <li>Trained on your business</li>
-                <li>Answers 24/7</li>
-                <li>Custom name & personality</li>
-                <li>One line of code</li>
-                <li>Works on any website</li>
-                <li>Conversation dashboard</li>
-                <li>Built for Australia 🇦🇺</li>
-                <li>No lock-in contracts</li>
-            </ul>
+      <a href="#" class="work-item">
+        <div class="kind">Product — In Development</div>
+        <h3>Mechanic Frank</h3>
+        <p>An AI used-car analysis service. Paste a listing, get an honest assessment in plain English.</p>
+        <span class="arrow">Coming soon →</span>
+      </a>
 
-            <div class="testimonial" style="background:#000050; border-color:#FFFF0055; color:#DDD; margin:12px 0;">
-                <em>"Holly answers customer questions about our Christmas shop around the clock — hours, location, custom orders. Customers love it."</em>
-                <div class="attr" style="color:#FFFF00;">— Kim Barlow, Santa's Secret, Bungendore NSW</div>
-            </div>
-
-            <div class="btn-row">
-                <a href="https://saygday.ai" target="_blank" class="btn btn-yellow">🤖 Try It Free at saygday.ai →</a>
-            </div>
-        </div>
-
-        <!-- WEB DESIGN -->
-        <div class="box">
-            <h2>💻 Web Design Studio</h2>
-            <p>Need a website to go with your chatbot? I build clean, fast, affordable websites for small businesses across Australia — handled completely for you. No code, no hosting headaches, no waiting weeks for updates.</p>
-            <ul class="services-grid" style="margin-top:12px;">
-                <li>Custom website design</li>
-                <li>Hosting included</li>
-                <li>Unlimited content updates</li>
-                <li>AI chatbot integration</li>
-                <li>Mobile-friendly & fast</li>
-                <li>Contact forms & email</li>
-                <li>No lock-in contracts</li>
-                <li>Flat monthly fee</li>
-            </ul>
-            <p style="margin-top:10px; font-size:12px; color:#555; font-style:italic;">Based in Canberra. Serving businesses all across Australia.</p>
-        </div>
-
-        <!-- WHO IS JAY -->
-        <div class="box">
-            <h2>👤 Who Is Jay?</h2>
-            <div class="about-grid">
-                <img src="/jay.jpg" alt="Jay Bergmann" class="about-photo">
-                <div>
-                    <p>I'm Jay — a Canberra-based developer, AI builder, and sci-fi author with 30+ years of experience across Australian business and government.</p>
-                    <p style="margin-top:8px;">I built <strong>Say G'day</strong> because good local businesses kept losing customers after hours — just because nobody was there to answer a simple question. AI fixes that, and I make it dead simple to set up.</p>
-                    <p style="margin-top:8px;">I've been building for the web since the dial-up days. I know what works, what doesn't, and how to get it done without the agency price tag.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- PORTFOLIO -->
-        <div class="box">
-            <h2>🖥️ Things I've Built</h2>
-            <div class="portfolio-grid">
-
-                <div class="project-card">
-                    <div class="project-icon">🗣️</div>
-                    <div>
-                        <div class="project-name">Say G'day <span class="badge-new">NEW!</span></div>
-                        <p class="project-desc">AI chatbot platform for Australian small businesses. Paste your URL, see your chatbot live before you pay, get one line of code to install. Answers customers 24/7.</p>
-                        <a class="project-link" href="https://saygday.ai" target="_blank">saygday.ai →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🎄</div>
-                    <div>
-                        <div class="project-name">Santa's Secret</div>
-                        <p class="project-desc">Website and AI chatbot (Holly) for a handcrafted Christmas décor shop in Bungendore NSW. Holly answers customer questions around the clock.</p>
-                        <a class="project-link" href="https://santasecret.com.au" target="_blank">santasecret.com.au →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">💩</div>
-                    <div>
-                        <div class="project-name">HolyShit.app</div>
-                        <p class="project-desc">Find the nearest public toilet anywhere in Australia. 35,000+ facilities mapped from official government data. Because sometimes you really need to know.</p>
-                        <a class="project-link" href="https://holyshit.app" target="_blank">holyshit.app →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon"><img src="https://m.media-amazon.com/images/I/51iu62c6gmL._SY522_.jpg" alt="The Reset"></div>
-                    <div>
-                        <div class="project-name">The Reset <span class="badge-new">NEW!</span></div>
-                        <p class="project-desc">My debut sci-fi novel — Book One of the TRUDY Trilogy. Available now on Amazon Kindle. Audiobook in production.</p>
-                        <a class="project-link" href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank">View on Amazon →</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- CONTACT -->
-        <div class="box">
-            <h2>📧 Get In Touch</h2>
-            <p style="text-align:center; margin-bottom:12px;">Interested in a chatbot or website for your business? Drop me a line.</p>
-            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact">
-                <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-                <div class="form-group">
-                    <label class="form-label" for="name">Your Name:</label>
-                    <input class="form-input" type="text" id="name" name="name" required placeholder="e.g. Bob Smith">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Your Email:</label>
-                    <input class="form-input" type="email" id="email" name="email" required placeholder="e.g. bob@yourbusiness.com.au">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="business">Business Name (optional):</label>
-                    <input class="form-input" type="text" id="business" name="business" placeholder="e.g. Bob's Bakery">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="website">Your Website (optional):</label>
-                    <input class="form-input" type="text" id="website" name="website" placeholder="e.g. bobsbakery.com.au">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="message">What do you need?</label>
-                    <textarea class="form-input form-textarea" id="message" name="message" required placeholder="Tell me about your business and what you're after..."></textarea>
-                </div>
-                <div class="btn-row">
-                    <button type="submit" class="btn">💾 Send Message</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="rainbow-hr"></div>
-
-        <div class="construction">🚧 <span>SITE UNDER CONSTRUCTION</span> 🚧</div>
-
-        <div class="counter">
-            You are visitor #
-            <span class="counter-digits">
-                <span>0</span><span>0</span><span>1</span><span>3</span><span>3</span><span>7</span>
-            </span>
-        </div>
-
-        <div class="webring">
-            &lt; <a href="#">Prev</a> |
-            🌐 <strong>Canberra Web Designers Ring</strong> |
-            <a href="#">Next</a> &gt;
-        </div>
-
-        <hr>
-
-        <p class="footer">
-            &copy; 2026 Jay Bergmann. All rights reserved.<br>
-            Best viewed in Netscape Navigator 4.0 at 800&times;600.
-        </p>
+      <a href="https://holyshit.app" class="work-item">
+        <div class="kind">Side Project — Live</div>
+        <h3>HolyShit.app</h3>
+        <p>A public toilet finder, built on top of an open government dataset. A bit of fun, and genuinely useful.</p>
+        <span class="arrow">Find a loo →</span>
+      </a>
 
     </div>
+  </section>
 
-    <div class="status-bar">
-        <span class="status-section">✅ Done</span>
-        <span class="status-section">🌐 Internet zone</span>
-        <span class="status-section" id="status-time"></span>
-    </div>
+  <!-- ABOUT -->
+  <section>
+    <div class="section-label">About</div>
+    <p class="about-prose">
+      I build small, useful things and write music and fiction.
+      <em>Mostly I just like helping people make their corner of the world a bit better.</em>
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="section-label">Get in touch</div>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+
+      <button type="submit">Send →</button>
+    </form>
+  </section>
+
 </div>
 
-<script>
-    function updateTime() {
-        const t = new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
-        const el = document.getElementById('status-time');
-        if (el) el.textContent = t;
-    }
-    updateTime();
-    setInterval(updateTime, 1000);
-</script>
+<footer>
+  <div>© Jay Bergmann, 2026</div>
+  <div class="links">
+    <a href="https://open.spotify.com/artist/2vP7XH11A1EhSJnteoeJfT" target="_blank" rel="noopener">Spotify</a>
+    <a href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" rel="noopener">Amazon</a>
+    <a href="#">GitHub</a>
+  </div>
+</footer>
 
 </body>
 </html>
