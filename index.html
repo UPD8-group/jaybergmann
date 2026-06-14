@@ -3,245 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>Jay Bergmann</title>
+<title>Jay Bergmann — Websites & apps that ship</title>
+<meta name="description" content="I design and build websites and web apps for small businesses and people with good ideas. Canberra, Australia.">
+<meta property="og:title" content="Jay Bergmann — Websites & apps that ship">
+<meta property="og:description" content="I design and build websites and web apps for small businesses and people with good ideas.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23f4ede1'/%3E%3Ctext x='50' y='52' font-family='Georgia,serif' font-size='62' font-weight='600' fill='%23b07b3e' text-anchor='middle' dominant-baseline='central'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f4ede1;          /* warm paper */
-    --bg2:#efe6d6;
-    --ink:#2c2620;          /* warm near-black */
-    --soft:#6b6052;         /* muted brown-grey */
-    --line:rgba(44,38,32,0.12);
-    --gold:#b07b3e;         /* burnt ochre */
-    --cream:#fbf6ec;
-    --shadow:rgba(60,45,25,0.10);
+    --bg:#f4ede1;--bg2:#efe6d6;--ink:#2c2620;--soft:#6b6052;
+    --line:rgba(44,38,32,0.12);--gold:#b07b3e;--gold-deep:#8a5e2c;
+    --cream:#fbf6ec;--shadow:rgba(60,45,25,0.10);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.75;
-    font-size:17.5px;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  /* subtle paper grain */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
-    opacity:0.45;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  }
-  .wrap{max-width:700px;margin:0 auto;padding:0 30px;position:relative;z-index:2}
-  section{padding:78px 0;position:relative}
-  .divider{height:1px;background:var(--line);max-width:640px;margin:0 auto}
-
-  h1,h2,h3{font-family:'Newsreader',serif;font-weight:500;line-height:1.16;letter-spacing:-0.01em}
-  h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:26px;font-weight:500}
-  h2{font-size:clamp(1.8rem,5vw,2.4rem);margin-bottom:10px}
-  h3{font-size:1.3rem;margin-bottom:6px;font-weight:600}
-  p{margin-bottom:18px}
-  p.muted{color:var(--soft)}
-  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(176,123,62,0.35);transition:border-color .25s,color .25s}
-  a:hover{border-color:var(--gold);color:#8a5e2c}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.4;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 30px;position:relative;z-index:2}
+  .narrow{max-width:720px}
+  h1,h2,h3{font-family:'Newsreader',serif;font-weight:500;line-height:1.14;letter-spacing:-0.01em}
+  h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:600}
+  h2{font-size:clamp(1.9rem,4.5vw,2.6rem)}
+  h3{font-size:1.3rem;font-weight:600}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{color:var(--gold-deep)}
   em{font-style:italic}
-  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;font-weight:500}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(244,237,225,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:16px 30px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Newsreader',serif;font-weight:600;font-size:1.3rem;letter-spacing:-0.01em;color:var(--ink)}
+  .nav-cta{font-family:'Inter';font-weight:600;font-size:.9rem;background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:100px;transition:transform .2s}
+  .nav-cta:hover{transform:translateY(-2px);color:var(--bg)}
 
   /* HERO */
-  .hero{padding-top:120px;padding-bottom:70px;text-align:left}
-  .hero .lede{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(1.25rem,3.6vw,1.6rem);color:var(--soft);max-width:560px;line-height:1.5}
+  .hero{padding:100px 0 70px}
+  .hero .eyebrow{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:24px}
+  .hero h1{margin-bottom:26px;max-width:14ch}
   .hero h1 .accent{color:var(--gold)}
+  .hero p{font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--soft);max-width:560px;font-family:'Newsreader',serif;line-height:1.5}
+  .hero .btns{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:'Inter';font-weight:600;font-size:.96rem;padding:14px 28px;border-radius:100px;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--ink);color:var(--bg)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--shadow);color:var(--bg)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--ink)}
 
-  /* VIDEO */
-  .video-frame{
-    margin-top:18px;border-radius:14px;overflow:hidden;
-    box-shadow:0 30px 60px -20px var(--shadow),0 10px 20px -10px var(--shadow);
-    position:relative;padding-bottom:56.25%;height:0;background:#000;
-  }
-  .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+  /* MARQUEE of what I do */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;background:var(--cream);overflow:hidden;white-space:nowrap}
+  .strip-track{display:inline-flex;gap:42px;animation:scroll 28s linear infinite;font-family:'Newsreader',serif;font-style:italic;font-size:1.3rem;color:var(--soft)}
+  .strip-track span{display:inline-flex;align-items:center;gap:42px}
+  .strip-track b{color:var(--gold);font-style:normal;font-weight:500}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* TRUDY centrepiece */
-  .centrepiece{
-    background:linear-gradient(180deg,var(--cream),#f7efe0);
-    border-radius:0;
-  }
-  .centrepiece::before,.centrepiece::after{
-    content:"";position:absolute;left:0;right:0;height:40px;
-    background:radial-gradient(ellipse at center top,var(--shadow),transparent 70%);
-  }
-  .centrepiece::before{top:-40px}
-  .centrepiece::after{bottom:-40px;transform:rotate(180deg)}
-  .centrepiece .tag{color:var(--gold);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
-  .pull{
-    font-family:'Newsreader',serif;font-style:italic;font-weight:500;
-    font-size:clamp(1.4rem,4.2vw,1.85rem);line-height:1.4;color:var(--ink);
-    border-left:3px solid var(--gold);padding-left:24px;margin:34px 0;
-  }
-  .visit{display:inline-block;margin-top:10px;font-size:.98rem;letter-spacing:.03em;font-weight:500}
-
-  /* APPS */
-  .app{
-    padding:28px 26px;margin-bottom:18px;border-radius:12px;
-    background:var(--cream);
-    box-shadow:0 10px 30px -18px var(--shadow);
-    transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;
-  }
-  .app:hover{transform:translateY(-4px);box-shadow:0 22px 44px -22px var(--shadow)}
-  .app .url{font-size:.8rem;color:var(--gold);letter-spacing:.05em;margin-bottom:10px;font-weight:500}
-  .app .why{color:var(--soft);font-size:.97rem;margin-bottom:0}
-  .why-label{color:var(--ink);font-style:italic;font-family:'Newsreader',serif;font-weight:500}
-
-  /* LINKS */
-  .links li{list-style:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:18px}
-  .links li:last-child{border-bottom:none}
-  .links .label{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:600}
-  .links .sub{color:var(--soft);font-size:.86rem}
-  .links .go{flex-shrink:0;font-weight:500}
-
-  footer{padding:64px 0 96px;color:var(--soft);font-size:.86rem;text-align:center}
-  footer p{color:var(--soft)}
-  .sig{font-family:'Newsreader',serif;font-style:italic;color:var(--ink);font-size:1.2rem;margin-bottom:14px}
-
-  /* SCROLL REVEAL */
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+  section{padding:80px 0}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
   .reveal.in{opacity:1;transform:none}
-  .reveal.d1{transition-delay:.08s}
-  .reveal.d2{transition-delay:.16s}
-  .reveal.d3{transition-delay:.24s}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+  .lead{font-size:1.15rem;color:var(--soft);max-width:620px;margin-bottom:14px}
+
+  /* SERVICES */
+  .svc{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+  @media(max-width:720px){.svc{grid-template-columns:1fr}}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:32px;box-shadow:0 12px 30px -20px var(--shadow);transition:transform .35s}
+  .card:hover{transform:translateY(-5px)}
+  .card .ico{font-size:1.8rem;margin-bottom:14px}
+  .card h3{margin-bottom:8px}
+  .card p{color:var(--soft);font-size:.98rem}
+
+  /* WORK */
+  .work{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+  @media(max-width:720px){.work{grid-template-columns:1fr}}
+  .proj{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:0 12px 30px -20px var(--shadow);transition:transform .35s;display:flex;flex-direction:column;gap:6px}
+  .proj:hover{transform:translateY(-5px)}
+  .proj .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .proj h3{font-size:1.2rem}
+  .proj .live{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#0a7d59;background:rgba(16,185,129,0.13);padding:4px 10px;border-radius:100px;flex-shrink:0}
+  .proj p{color:var(--soft);font-size:.94rem;margin:4px 0 10px}
+  .proj .visit{font-size:.88rem;font-weight:600}
+
+  /* PROCESS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  @media(max-width:720px){.steps{grid-template-columns:1fr}}
+  .step .n{font-family:'Newsreader',serif;font-size:2.4rem;color:var(--gold);font-weight:600;line-height:1}
+  .step h3{margin:10px 0 6px}
+  .step p{color:var(--soft);font-size:.96rem}
+
+  /* CONTACT */
+  .contact{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:48px;margin-top:10px;box-shadow:0 20px 50px -28px var(--shadow)}
+  @media(max-width:600px){.contact{padding:32px 24px}}
+  .contact h2{margin-bottom:10px}
+  .contact .lead{margin-bottom:28px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);font-weight:600;margin-bottom:7px}
+  .field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-family:'Inter';font-size:1rem;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s}
+  .field input:focus,.field textarea:focus{border-color:var(--gold)}
+  .field textarea{min-height:130px;resize:vertical}
+  .contact button{width:100%;background:var(--ink);color:var(--bg);border:none;font-family:'Inter';font-weight:600;font-size:1rem;padding:15px;border-radius:100px;cursor:pointer;transition:transform .2s}
+  .contact button:hover{transform:translateY(-2px)}
+
+  footer{padding:50px 0 70px;color:var(--soft);font-size:.9rem;text-align:center;border-top:1px solid var(--line);margin-top:80px}
+  footer a{font-weight:600}
+  footer .sig{font-family:'Newsreader',serif;font-style:italic;color:var(--ink);font-size:1.1rem;margin-bottom:10px}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="brand">Jay Bergmann</a>
+    <a href="#contact" class="nav-cta">Start a project</a>
+  </div>
+</nav>
+
+<a id="top"></a>
 <section class="hero">
-  <div class="wrap">
-    <p class="eyebrow reveal">Jay Bergmann · Canberra</p>
-    <h1 class="reveal d1">Hi, I'm James.<br>My friends<br>call me <span class="accent">Jay.</span></h1>
-    <p class="lede reveal d2">It's lovely to meet you. I build things for my friends and myself — most of it starts with something I need, a real moment of friction, usually one I'm standing in. I made this site to show you a bit more about what I do and who I am. It's password protected because it's only for my Airtree Frontier application.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- VIDEO -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow reveal">A quick hello</p>
-    <h2 class="reveal d1">Who I am, in my own voice</h2>
-    <p class="muted reveal d1">An introduction — me saying hello, and a bit about what I'm doing and why.</p>
-    <div class="video-frame reveal d2">
-      <iframe src="https://www.youtube.com/embed/T-S-sW12BdA?rel=0" title="Jay Bergmann — introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div class="wrap narrow">
+    <p class="eyebrow reveal">Web design & development · Canberra, Australia</p>
+    <h1 class="reveal d1">I build websites &<br>apps that <span class="accent">actually ship.</span></h1>
+    <p class="reveal d2">I'm Jay. I design and build clean, fast, modern websites and web apps for small businesses and people with good ideas — and I get them live, not stuck in a folder somewhere.</p>
+    <div class="btns reveal d2">
+      <a href="#contact" class="btn btn-primary">Start a project →</a>
+      <a href="#work" class="btn btn-ghost">See my work</a>
     </div>
   </div>
 </section>
 
-<!-- TRUDY — centrepiece -->
-<section class="centrepiece">
-  <div class="wrap">
-    <p class="tag reveal">What I want to spend my next decade on</p>
-    <h2 class="reveal d1">Trudy</h2>
-    <p class="reveal d1" style="margin-top:22px;">This one started with the why, not the what.</p>
-    <p class="reveal">In 2018, my mother was diagnosed with a rare and aggressive stage four stomach cancer. She'd just come home from walking the Camino de Santiago — three months, from Saint-Jean, on her own. Getting that news was devastating. But she was a nurse and a midwife. She knew exactly what was coming.</p>
-    <p class="reveal">She asked me to be her primary carer. For the next eight months I looked after her — I did everything I possibly could, while watching her die. On the 22nd of February, she passed away while I was holding her hand.</p>
-    <p class="reveal">In that time, I recorded conversations with her — stories, memories, moments I knew I wanted to keep, and that I wanted my daughter to have one day. I still have them. I can still hear her voice. And I know exactly what that's worth, because not long ago a friend told me she'd had recordings of her own father, who died fifteen years ago — and a phone update wiped them. They're simply gone. There's no getting them back.</p>
-    <p class="reveal">That's the moment this stopped being an idea and became the thing I had to build. Because almost no one has these recordings — and the few who do can lose them to something as ordinary as a software update.</p>
-    <p class="reveal">So Trudy captures the life stories of older people — by phone. There's no app, no screen, no login, nothing to learn. The phone rings on the same day each week, an AI interviewer asks gentle questions, and the conversation is recorded, transcribed, and kept forever in a private family vault — safe, backed up, and not sitting on someone's phone waiting to vanish.</p>
-    <p class="reveal">The person paying is the adult child — the <em>Curator</em>. The person on the phone is their parent — the <em>Storyteller</em> — who has to do nothing but answer a ringing phone and talk. The voice is preserved exactly as it is. The accent, the pauses, the way they tell a story they've told a hundred times.</p>
-    <p class="reveal">But the recording is only half of it. The call comes at the same time every week, and that rhythm matters. It becomes something to look forward to — a standing appointment, a familiar voice, a reason to reach back into your life and tell it to someone who's listening. From what I understand, routine and a sense of purpose genuinely matter for older people's wellbeing, especially for those who are isolated. So Trudy isn't only preserving a life for the family who comes after — it's giving the person living it a bit of connection and meaning while they're still here to feel it.</p>
-    <p class="reveal">I bought trudy.org a few years ago. I didn't know yet what it would become — only that the name was special, and that one day it would be used for something that mattered. This is it.</p>
-    <p class="reveal" style="font-size:0.96rem;color:var(--soft);margin-top:30px;"><strong style="color:var(--ink);font-weight:600;">A note on how it's built.</strong> The thing that makes a service like this work is a voice that feels human enough that an older person forgets they're talking to a machine and just talks. The benchmark there is Sesame's Maya. Their full assistant is proprietary, but the model underneath it — CSM — is open and commercially usable under an Apache 2.0 licence. CSM handles the voice; it doesn't think, so you pair it with a language model for the actual interview. It isn't built for fast, real-time back-and-forth yet — but Trudy doesn't need that. A gentle, unhurried weekly conversation is exactly the kind of pace it's suited to. So the path is real: an open voice layer, a language model guiding the questions, and the call itself wrapped in telephony so the Storyteller needs nothing but a phone that rings.</p>
-    <p class="pull reveal">It's named after my mother, Trudy — a nurse and midwife. No family should have to lose someone's voice twice.</p>
+<div class="strip">
+  <div class="strip-track">
+    <span>Websites <b>·</b> Web apps <b>·</b> AI chatbots <b>·</b> Small business <b>·</b> Landing pages <b>·</b> Booking tools <b>·</b> Branding <b>·</b> Built in Australia <b>·</b></span>
+    <span>Websites <b>·</b> Web apps <b>·</b> AI chatbots <b>·</b> Small business <b>·</b> Landing pages <b>·</b> Booking tools <b>·</b> Branding <b>·</b> Built in Australia <b>·</b></span>
   </div>
-</section>
+</div>
 
-<!-- APPS -->
+<!-- SERVICES -->
 <section>
-  <div class="wrap">
-    <p class="eyebrow reveal">The things I've built on the side</p>
-    <h2 class="reveal d1">Small problems, shipped real</h2>
-    <p class="muted reveal d1" style="margin-bottom:34px;">I don't build apps to fill a portfolio. Each one started as a real moment of friction — usually one I was standing in. Self-taught, built from my phone, deployed live.</p>
-
-    <div class="app reveal">
-      <p class="url"><a href="https://holyshit.app" target="_blank" rel="noopener">holyshit.app →</a></p>
-      <h3>HolyShit.app</h3>
-      <p class="why"><span class="why-label">Why I built it: </span>Because finding a clean public toilet when you've got kids in the car and someone's about to lose it is genuinely hard — and every existing tool is a buried government spreadsheet or a Google pin with no information. So I made the best free toilet finder in Australia, gave it a gospel-meets-Michelin-Guide sense of humour, and put it out with no ads, no accounts, no catch.</p>
-    </div>
-
-    <div class="app reveal">
-      <p class="url"><a href="https://generalboarding.com" target="_blank" rel="noopener">generalboarding.com →</a></p>
-      <h3>General Boarding</h3>
-      <p class="why"><span class="why-label">Why I built it: </span>The app that hears your boarding call so you don't have to. I was standing at a gate watching the priority and general boarding signs, thinking about how much quiet anxiety there is in flying — straining to catch a garbled announcement, terrified of missing it. Every existing tool is locked to one airline or one airport. This is the airline-agnostic, anxiety-first layer a traveller keeps across every trip, worldwide. Gate seven, the day I bought it. Seven was Mum's birthday.</p>
-    </div>
-
-    <div class="app reveal">
-      <p class="url"><a href="https://saygday.ai" target="_blank" rel="noopener">saygday.ai →</a></p>
-      <h3>Say G'day</h3>
-      <p class="why"><span class="why-label">Why I built it: </span>An AI chat assistant for Australian small businesses, trained on their own website, answering customer questions 24/7 with every conversation saved to a simple dashboard. It started because a friend running a Christmas shop couldn't be at her desk at 10pm on a Sunday when someone wanted to know if she was open tomorrow. Now her chatbot answers for her — a front desk that never closes, for the price of a coffee a day.</p>
+  <div class="wrap narrow">
+    <h2 class="reveal">What I make</h2>
+    <p class="lead reveal d1">Whether you need a simple, beautiful site or a custom tool that does something clever, I can build it — and I build the whole thing myself, so there's no agency markup or runaround.</p>
+    <div class="svc">
+      <div class="card reveal"><div class="ico">🎨</div><h3>Websites</h3><p>Modern, fast, mobile-first sites that make small businesses look the part. Designed to be easy to find and easy to trust.</p></div>
+      <div class="card reveal d1"><div class="ico">⚙️</div><h3>Web apps & tools</h3><p>Custom tools that solve a real problem — booking systems, directories, generators, dashboards. If you can describe it, I can usually build it.</p></div>
+      <div class="card reveal"><div class="ico">💬</div><h3>AI chatbots</h3><p>An assistant trained on your business that answers customer questions 24/7. The same tech behind my Say G'day product.</p></div>
+      <div class="card reveal d1"><div class="ico">🚀</div><h3>Getting it live</h3><p>Domains, hosting, email, the lot. I don't just hand over files — I get your thing working in the real world.</p></div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- GET TO KNOW ME -->
+<!-- WORK -->
+<a id="work"></a>
 <section>
-  <div class="wrap">
-    <p class="eyebrow reveal">If you want the real me</p>
-    <h2 class="reveal d1">The things I make when no one's asking</h2>
-    <p class="reveal d1">I've written poetry for forty years. Recently I turned it into music — atmospheric electronic pieces I release as <em>Vienna Park</em>.</p>
-    <p class="reveal">Two years ago I got sober. I tie it to my mother's birthday, the 7th of April — so each year on that day I remember her, and I'm quietly proud of myself for stopping. In that first year, to stay distracted and to finally do something I'd always meant to, I wrote a book: <em>The Reset</em>. I started it on the 7th of April and finished it on the 7th of April a year later. A dozen publishers passed on it. I wasn't going to let that be the end of it, so I published it myself on Amazon.</p>
-    <p class="pull reveal">In the year 2607, reality is programmable. But memory is still painfully human.</p>
-    <p class="reveal">It follows Josh Miller — once a renowned terraformer, now shelving rare books beneath a Berlin scarred by climate collapse and draped in augmented illusions. He's haunted by fragments of a past he can't quite remember and a woman he's never met yet somehow loves. When "flickers" of impossible memories start fracturing his world, he's pulled into a question he can't escape: in a place where consciousness itself can be programmed, how do you know if your choices — even your love — are truly your own? Josh's flickers are woven from my own lived experience, which is what gives them their pulse. It's Book One of the TRUDY Trilogy — her name carries on there too.</p>
-    <ul class="links reveal d2">
-      <li>
-        <span><span class="label">Vienna Park</span><br><span class="sub">Atmospheric electronic music, written from my own poetry</span></span>
-        <a class="go" href="https://open.spotify.com/artist/2vP7XH11A1EhSJnteoeJfT" target="_blank" rel="noopener">Spotify →</a>
-      </li>
-      <li>
-        <span><span class="label">The Reset</span><br><span class="sub">Book One of the TRUDY Trilogy — self-published</span></span>
-        <a class="go" href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" rel="noopener">Amazon →</a>
-      </li>
-    </ul>
+  <div class="wrap narrow">
+    <h2 class="reveal">Things I've built</h2>
+    <p class="lead reveal d1">A few of my own products and client projects — all live, all real.</p>
+    <div class="work">
+      <div class="proj reveal">
+        <div class="top"><h3>Say G'day</h3><span class="live">Live</span></div>
+        <p>An AI chat assistant for Australian small businesses, trained on their own website to answer customer questions around the clock.</p>
+        <a class="visit" href="https://saygday.ai" target="_blank" rel="noopener">saygday.ai →</a>
+      </div>
+      <div class="proj reveal d1">
+        <div class="top"><h3>Santa's Secret</h3><span class="live">Live</span></div>
+        <p>A bespoke website for a Bungendore Christmas shop — with Holly, a custom AI assistant handling out-of-hours questions.</p>
+        <a class="visit" href="https://santasecret.com.au" target="_blank" rel="noopener">santasecret.com.au →</a>
+      </div>
+      <div class="proj reveal">
+        <div class="top"><h3>HolyShit.app</h3><span class="live">Live</span></div>
+        <p>The best free public toilet finder in Australia. Built because finding a clean loo with kids in the car shouldn't be hard.</p>
+        <a class="visit" href="https://holyshit.app" target="_blank" rel="noopener">holyshit.app →</a>
+      </div>
+      <div class="proj reveal d1">
+        <div class="top"><h3>General Boarding</h3><span class="live">Live</span></div>
+        <p>The app that listens for your boarding call so you don't have to — airline-agnostic, anxiety-first travel help.</p>
+        <a class="visit" href="https://generalboarding.com" target="_blank" rel="noopener">generalboarding.com →</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ABOUT -->
+<!-- PROCESS -->
 <section>
-  <div class="wrap">
-    <p class="eyebrow reveal">A little background</p>
-    <h2 class="reveal d1">The short version</h2>
-    <p class="reveal d1">Twenty-plus years in the Australian Public Service — Defence, Finance, COMCAR. I drove Canberra's light rail. I built a Canberra history community on Facebook that reached 80,000 people before a local media company acquired it — so I started another, Lost. Canberra, now just past 2,000 and growing. I like building communities. I like helping people. I've written poetry for forty years, released music, published a novel, and shipped more than a dozen live apps — all self-taught, most of it from a phone.</p>
-    <p class="reveal">Two years sober. I cared for my mother through her last eight months. The work I'm proudest of all points the same direction: holding onto the things that quietly vanish. Trudy is where that finally became a business.</p>
+  <div class="wrap narrow">
+    <h2 class="reveal">How it works</h2>
+    <p class="lead reveal d1">Simple, honest, no jargon.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>We talk</h3><p>Tell me what you need and what you're picturing. I'll tell you honestly what's realistic and what it'll cost.</p></div>
+      <div class="step reveal d1"><div class="n">2</div><h3>I build it</h3><p>I design and build it, showing you progress as I go so there are no surprises at the end.</p></div>
+      <div class="step reveal d2"><div class="n">3</div><h3>It goes live</h3><p>I get it deployed, working, and yours — and I'm around if you need changes down the track.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<a id="contact"></a>
+<section>
+  <div class="wrap narrow">
+    <div class="contact reveal">
+      <h2>Let's build something</h2>
+      <p class="lead">Got an idea, a business that needs a site, or a tool you wish existed? Tell me about it — I read every message myself.</p>
+      <form name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="enquiry">
+        <p style="display:none"><label>Don't fill this in: <input name="bot-field"></label></p>
+        <div class="field"><label>Your name</label><input type="text" name="name" required></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required></div>
+        <div class="field"><label>What are you after?</label><textarea name="message" placeholder="A new website, an app idea, a chatbot for my business…" required></textarea></div>
+        <button type="submit">Send it through →</button>
+      </form>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p class="sig reveal">Thanks for taking the time.</p>
-    </div>
+    <p class="sig">Made in Canberra, with care.</p>
+    <p>Jay Bergmann · Web design & development · Canberra, Australia</p>
+  </div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  // Gentle parallax on hero
-  const hero = document.querySelector('.hero');
-  window.addEventListener('scroll', ()=>{
-    const y = window.scrollY;
-    if(y < 700 && hero){ hero.style.transform = 'translateY(' + (y * 0.12) + 'px)'; hero.style.opacity = Math.max(0, 1 - y/600); }
-  }, {passive:true});
 </script>
 
 </body>
