@@ -84,6 +84,21 @@
   }
   .visit{display:inline-block;margin-top:10px;font-size:.98rem;letter-spacing:.03em;font-weight:500}
 
+  .howbox{
+    background:rgba(255,255,255,0.55);
+    border:1px solid rgba(176,123,62,0.25);
+    border-radius:14px;
+    padding:30px 30px 28px;
+    margin:30px 0;
+    box-shadow:0 14px 36px -26px var(--shadow);
+  }
+  .howbox p{color:var(--ink)}
+  .howbox-label{
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:16px;
+  }
+  @media(max-width:600px){.howbox{padding:24px 22px}}
+
   /* APPS */
   .app{
     padding:28px 26px;margin-bottom:18px;border-radius:12px;
@@ -151,10 +166,14 @@
     <p class="reveal">She asked me to be her primary carer. For the next eight months I looked after her — I did everything I possibly could, while watching her die. On the 22nd of February, she passed away while I was holding her hand.</p>
     <p class="reveal">In that time, I recorded conversations with her — stories, memories, moments I knew I wanted to keep, and that I wanted my daughter to have one day. I still have them. I can still hear her voice. And I know exactly what that's worth, because not long ago a friend told me she'd had recordings of her own father, who died fifteen years ago — and a phone update wiped them. They're simply gone. There's no getting them back.</p>
     <p class="reveal">That's the moment this stopped being an idea and became the thing I had to build. Because almost no one has these recordings — and the few who do can lose them to something as ordinary as a software update.</p>
-    <p class="reveal">So Trudy captures the life stories of older people — by phone. There's no app, no screen, no login, nothing to learn. The phone rings on the same day each week, an AI interviewer asks gentle questions, and the conversation is recorded, transcribed, and kept forever in a private family vault — safe, backed up, and not sitting on someone's phone waiting to vanish.</p>
-    <p class="reveal">The person paying is the adult child — the <em>Curator</em>. The person on the phone is their parent — the <em>Storyteller</em> — who has to do nothing but answer a ringing phone and talk. The voice is preserved exactly as it is. The accent, the pauses, the way they tell a story they've told a hundred times.</p>
-    <p class="reveal">But the recording is only half of it. The call comes at the same time every week, and that rhythm matters. It becomes something to look forward to — a standing appointment, a familiar voice, a reason to reach back into your life and tell it to someone who's listening. From what I understand, routine and a sense of purpose genuinely matter for older people's wellbeing, especially for those who are isolated. So Trudy isn't only preserving a life for the family who comes after — it's giving the person living it a bit of connection and meaning while they're still here to feel it.</p>
     <p class="reveal">I bought trudy.org a few years ago. I didn't know yet what it would become — only that the name was special, and that one day it would be used for something that mattered. This is it.</p>
+    <p class="reveal">So Trudy captures the life stories of older people — by phone. There's no app, no screen, no login, nothing to learn. The phone rings on the same day each week, an AI interviewer asks gentle questions, and the conversation is recorded, transcribed, and kept forever in a private family vault — safe, backed up, and not sitting on someone's phone waiting to vanish.</p>
+    <div class="howbox reveal">
+      <p class="howbox-label">How it works</p>
+      <p>The person paying is the adult child — the <em>Curator</em>. The person on the phone is their parent — the <em>Storyteller</em> — who has to do nothing but answer a ringing phone and talk. The voice is preserved exactly as it is. The accent, the pauses, the way they tell a story they've told a hundred times.</p>
+      <p>The Curator has a simple dashboard. That's where they shape the conversation — choosing the themes and questions the AI will gently work through each week. "Ask Mum about how she met Dad." "Find out what her childhood home was like." "I want to know about the year she spent overseas." So the interview isn't generic; it's guided by the family, toward the stories they most want kept. The Storyteller never sees any of it — for them it's just a warm, curious voice that calls and asks the right questions. The adult child is quietly authoring the record of their own parent's life.</p>
+      <p style="margin-bottom:0;">But the recording is only half of it. The call comes at the same time every week, and that rhythm matters. It becomes something to look forward to — a standing appointment, a familiar voice, a reason to reach back into your life and tell it to someone who's listening. From what I understand, routine and a sense of purpose genuinely matter for older people's wellbeing, especially for those who are isolated. So Trudy isn't only preserving a life for the family who comes after — it's giving the person living it a bit of connection and meaning while they're still here to feel it.</p>
+    </div>
     <p class="reveal" style="font-size:0.96rem;color:var(--soft);margin-top:30px;"><strong style="color:var(--ink);font-weight:600;">A note on how it's built.</strong> The thing that makes a service like this work is a voice that feels human enough that an older person forgets they're talking to a machine and just talks. The benchmark there is Sesame's Maya. Their full assistant is proprietary, but the model underneath it — CSM — is open and commercially usable under an Apache 2.0 licence. CSM handles the voice; it doesn't think, so you pair it with a language model for the actual interview. It isn't built for fast, real-time back-and-forth yet — but Trudy doesn't need that. A gentle, unhurried weekly conversation is exactly the kind of pace it's suited to. So the path is real: an open voice layer, a language model guiding the questions, and the call itself wrapped in telephony so the Storyteller needs nothing but a phone that rings.</p>
     <p class="pull reveal">It's named after my mother, Trudy — a nurse and midwife. No family should have to lose someone's voice twice.</p>
   </div>
@@ -218,15 +237,17 @@
   <div class="wrap">
     <p class="eyebrow reveal">A little background</p>
     <h2 class="reveal d1">The short version</h2>
-    <p class="reveal d1">Twenty-plus years in the Australian Public Service — Defence, Finance, COMCAR. I drove Canberra's light rail. I built a Canberra history community on Facebook that reached 80,000 people before a local media company acquired it — so I started another, Lost. Canberra, now just past 2,000 and growing. I like building communities. I like helping people. I've written poetry for forty years, released music, published a novel, and shipped more than a dozen live apps — all self-taught, most of it from a phone.</p>
-    <p class="reveal">Two years sober. I cared for my mother through her last eight months. The work I'm proudest of all points the same direction: holding onto the things that quietly vanish. Trudy is where that finally became a business.</p>
+    <p class="reveal d1">I'm fifty-three, and recently diagnosed with ADHD — which, as far as I'm concerned, is a superpower. It's where all these ideas come from. The difference now is that with AI and vibe-coding, I can finally put them into motion fast — I build alongside Claude most days, turning things that used to stay stuck in my head into live products in a weekend.</p>
+    <p class="reveal">I like building communities, and I like helping people — I think it matters to be connected to the place you live. A few years ago I built a Canberra history community on Facebook that reached 80,000 people before a local media company acquired it. I've recently started another, Lost. Canberra, now past 2,000 and growing.</p>
+    <p class="reveal">I've written poetry for forty years, released music, published a novel, and shipped more than a dozen live apps — all self-taught, most of it from my phone.</p>
+    <p class="reveal">So why Frontier, and why me? The honest answer is that ADHD gives me more ideas than any one person should have, and AI finally lets me build them — but I've been doing it alone, from my phone, in the gaps. The thing I've never had is people around me. A room of others at the same stage, pushing each other every Friday, a network to open doors, the room to chase one idea properly instead of starting six. I build fast on my own; I think I'd build something that lasts with the right people beside me. That's what Frontier means to me.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <p class="sig reveal">Thanks for taking the time.</p>
-    <p class="reveal">Jay Bergmann · Canberra, Australia · </p>
+    <p class="reveal">Jay Bergmann · Canberra, Australia</p>
   </div>
 </footer>
 
