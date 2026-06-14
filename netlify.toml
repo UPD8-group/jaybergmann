@@ -1,7 +1,3 @@
 [[edge_functions]]
   function = "airtree-gate"
-  path = "/airtree-2026"
-
-[[edge_functions]]
-  function = "airtree-gate"
-  path = "/airtree-2026/*"
+  path = "/airtree-2026*"
