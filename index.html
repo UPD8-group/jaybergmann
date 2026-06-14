@@ -5,17 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Jay Bergmann</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23f4ede1'/%3E%3Ctext x='50' y='52' font-family='Georgia,serif' font-size='62' font-weight='600' fill='%23b07b3e' text-anchor='middle' dominant-baseline='central'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0f0e0d;
-    --ink:#ece7df;
-    --muted:#9a9389;
-    --line:rgba(236,231,223,0.10);
-    --gold:#c89b5a;
-    --card:#16140f;
+    --bg:#f4ede1;          /* warm paper */
+    --bg2:#efe6d6;
+    --ink:#2c2620;          /* warm near-black */
+    --soft:#6b6052;         /* muted brown-grey */
+    --line:rgba(44,38,32,0.12);
+    --gold:#b07b3e;         /* burnt ochre */
+    --cream:#fbf6ec;
+    --shadow:rgba(60,45,25,0.10);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -23,65 +26,94 @@
     background:var(--bg);
     color:var(--ink);
     font-family:'Inter',sans-serif;
-    line-height:1.7;
+    line-height:1.75;
+    font-size:17.5px;
     -webkit-font-smoothing:antialiased;
-    font-size:17px;
+    overflow-x:hidden;
   }
-  .wrap{max-width:720px;margin:0 auto;padding:0 28px}
-  section{padding:64px 0;border-bottom:1px solid var(--line)}
-  section:last-child{border-bottom:none}
-  h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;line-height:1.18;letter-spacing:-0.01em}
-  h1{font-size:clamp(2.4rem,7vw,3.6rem);margin-bottom:22px}
-  h2{font-size:clamp(1.6rem,4.5vw,2.1rem);margin-bottom:8px}
-  h3{font-size:1.25rem;margin-bottom:6px}
-  p{margin-bottom:18px;color:var(--ink)}
-  p.muted{color:var(--muted)}
-  a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
-  a:hover{border-color:var(--gold)}
-  .eyebrow{font-family:'Inter';font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    opacity:0.45;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:700px;margin:0 auto;padding:0 30px;position:relative;z-index:2}
+  section{padding:78px 0;position:relative}
+  .divider{height:1px;background:var(--line);max-width:640px;margin:0 auto}
+
+  h1,h2,h3{font-family:'Newsreader',serif;font-weight:500;line-height:1.16;letter-spacing:-0.01em}
+  h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:26px;font-weight:500}
+  h2{font-size:clamp(1.8rem,5vw,2.4rem);margin-bottom:10px}
+  h3{font-size:1.3rem;margin-bottom:6px;font-weight:600}
+  p{margin-bottom:18px}
+  p.muted{color:var(--soft)}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(176,123,62,0.35);transition:border-color .25s,color .25s}
+  a:hover{border-color:var(--gold);color:#8a5e2c}
+  em{font-style:italic}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;font-weight:500}
 
   /* HERO */
-  .hero{padding-top:96px;padding-bottom:56px}
-  .hero .lede{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.2rem,3.5vw,1.5rem);color:var(--ink);max-width:560px}
+  .hero{padding-top:120px;padding-bottom:70px;text-align:left}
+  .hero .lede{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(1.25rem,3.6vw,1.6rem);color:var(--soft);max-width:560px;line-height:1.5}
+  .hero h1 .accent{color:var(--gold)}
 
   /* VIDEO */
   .video-frame{
-    margin-top:14px;
-    border:1px solid var(--line);
-    border-radius:6px;
-    overflow:hidden;
-    background:#000;
+    margin-top:18px;border-radius:14px;overflow:hidden;
+    box-shadow:0 30px 60px -20px var(--shadow),0 10px 20px -10px var(--shadow);
+    position:relative;padding-bottom:56.25%;height:0;background:#000;
   }
-  video{width:100%;display:block}
+  .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
   /* TRUDY centrepiece */
-  .centrepiece{background:var(--card)}
-  .centrepiece .tag{color:var(--gold);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
-  .pull{
-    font-family:'Fraunces',serif;font-style:italic;
-    font-size:clamp(1.3rem,4vw,1.7rem);
-    line-height:1.4;color:var(--ink);
-    border-left:2px solid var(--gold);
-    padding-left:22px;margin:30px 0;
+  .centrepiece{
+    background:linear-gradient(180deg,var(--cream),#f7efe0);
+    border-radius:0;
   }
-  .visit{display:inline-block;margin-top:8px;font-size:.95rem;letter-spacing:.04em}
+  .centrepiece::before,.centrepiece::after{
+    content:"";position:absolute;left:0;right:0;height:40px;
+    background:radial-gradient(ellipse at center top,var(--shadow),transparent 70%);
+  }
+  .centrepiece::before{top:-40px}
+  .centrepiece::after{bottom:-40px;transform:rotate(180deg)}
+  .centrepiece .tag{color:var(--gold);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  .pull{
+    font-family:'Newsreader',serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.4rem,4.2vw,1.85rem);line-height:1.4;color:var(--ink);
+    border-left:3px solid var(--gold);padding-left:24px;margin:34px 0;
+  }
+  .visit{display:inline-block;margin-top:10px;font-size:.98rem;letter-spacing:.03em;font-weight:500}
 
   /* APPS */
-  .app{padding:30px 0;border-bottom:1px solid var(--line)}
-  .app:last-child{border-bottom:none}
-  .app .url{font-size:.82rem;color:var(--muted);letter-spacing:.04em;margin-bottom:10px;font-family:'Inter'}
-  .app .why{color:var(--muted);font-size:.97rem;margin-bottom:0}
-  .why-label{color:var(--gold);font-style:italic;font-family:'Fraunces',serif}
+  .app{
+    padding:28px 26px;margin-bottom:18px;border-radius:12px;
+    background:var(--cream);
+    box-shadow:0 10px 30px -18px var(--shadow);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;
+  }
+  .app:hover{transform:translateY(-4px);box-shadow:0 22px 44px -22px var(--shadow)}
+  .app .url{font-size:.8rem;color:var(--gold);letter-spacing:.05em;margin-bottom:10px;font-weight:500}
+  .app .why{color:var(--soft);font-size:.97rem;margin-bottom:0}
+  .why-label{color:var(--ink);font-style:italic;font-family:'Newsreader',serif;font-weight:500}
 
   /* LINKS */
-  .links li{list-style:none;padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .links li{list-style:none;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:18px}
   .links li:last-child{border-bottom:none}
-  .links .label{font-family:'Fraunces',serif;font-size:1.15rem}
-  .links .sub{color:var(--muted);font-size:.85rem}
+  .links .label{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:600}
+  .links .sub{color:var(--soft);font-size:.86rem}
+  .links .go{flex-shrink:0;font-weight:500}
 
-  footer{padding:56px 0 80px;color:var(--muted);font-size:.85rem}
-  footer p{color:var(--muted)}
-  .sig{font-family:'Fraunces',serif;font-style:italic;color:var(--ink);font-size:1.05rem}
+  footer{padding:64px 0 96px;color:var(--soft);font-size:.86rem;text-align:center}
+  footer p{color:var(--soft)}
+  .sig{font-family:'Newsreader',serif;font-style:italic;color:var(--ink);font-size:1.2rem;margin-bottom:14px}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}
+  .reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -89,20 +121,22 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Jay Bergmann · Canberra</p>
-    <h1>I build things<br>my friends and I use.</h1>
-    <p class="lede">Most of it starts as something I needed myself — a real moment of friction, usually one I was standing in. Memory, history, voices, moments. The quiet things that slip away when no one's holding onto them. That's the thread running through it all.</p>
+    <p class="eyebrow reveal">Jay Bergmann · Canberra</p>
+    <h1 class="reveal d1">Hi, I'm James.<br>My friends<br>call me <span class="accent">Jay.</span></h1>
+    <p class="lede reveal d2">It's lovely to meet you. I build things for my friends and myself — most of it starts with something I need, a real moment of friction, usually one I'm standing in. I made this site to show you a bit more about what I do and who I am. It's password protected because it's only for my Airtree Frontier application.</p>
   </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- VIDEO -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">A quick hello</p>
-    <h2>Who I am, in my own voice</h2>
-    <p class="muted">An introduction — me saying hello, and a bit about what I'm doing and why.</p>
-    <div class="video-frame" style="position:relative;padding-bottom:56.25%;height:0;">
-      <iframe src="https://www.youtube.com/embed/T-S-sW12BdA?rel=0" title="Jay Bergmann — introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    <p class="eyebrow reveal">A quick hello</p>
+    <h2 class="reveal d1">Who I am, in my own voice</h2>
+    <p class="muted reveal d1">An introduction — me saying hello, and a bit about what I'm doing and why.</p>
+    <div class="video-frame reveal d2">
+      <iframe src="https://www.youtube.com/embed/T-S-sW12BdA?rel=0" title="Jay Bergmann — introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -110,88 +144,106 @@
 <!-- TRUDY — centrepiece -->
 <section class="centrepiece">
   <div class="wrap">
-    <p class="tag">The one that matters most</p>
-    <h2>Trudy</h2>
-    <p class="muted" style="margin-top:4px;">trudy.org</p>
-    <p style="margin-top:22px;">This one started with the why, not the what.</p>
-    <p>I have recordings of my mother from seven years ago. I can still hear her voice whenever I want to — and I know exactly what it's worth, because I cared for her through her final months and I'm already forgetting the sound of her in my own memory.</p>
-    <p>Then today a friend told me she had recordings of her father, who died fifteen years ago. A phone update wiped them. They're simply gone. There is no getting them back. That's the moment this stopped being an idea and became something I had to build — because almost no one has these recordings, and the few who do can lose them to something as ordinary as a software update.</p>
-    <p>So Trudy captures the life stories of older people — by phone. There's no app, no screen, no login, nothing to learn. The phone rings on the same day each week, an AI interviewer asks gentle questions, and the conversation is recorded, transcribed, and kept forever in a private family vault — safe, backed up, and not sitting on someone's phone waiting to vanish.</p>
-    <p>The person paying is the adult child — the <em>Curator</em>. The person on the phone is their parent — the <em>Storyteller</em> — who has to do nothing but answer a ringing phone and talk. The voice is preserved exactly as it is. The accent, the pauses, the way they tell a story they've told a hundred times.</p>
-    <p class="pull">It's named after my mother, Trudy — a nurse and midwife. No family should have to lose someone's voice twice.</p>
-    <p>There's a second product hiding inside the first. The weekly call itself becomes something an older person looks forward to — a reason to remember, a sense that their story matters. That's where Trudy reaches past families into aged care, home care, and social prescribing: purpose as the product, not just preservation.</p>
-    <a class="visit" href="https://trudy.org" target="_blank" rel="noopener">Visit trudy.org →</a>
+    <p class="tag reveal">What I want to spend my next decade on</p>
+    <h2 class="reveal d1">Trudy</h2>
+    <p class="reveal d1" style="margin-top:22px;">This one started with the why, not the what.</p>
+    <p class="reveal">In 2018, my mother was diagnosed with a rare and aggressive stage four stomach cancer. She'd just come home from walking the Camino de Santiago — three months, from Saint-Jean, on her own. Getting that news was devastating. But she was a nurse and a midwife. She knew exactly what was coming.</p>
+    <p class="reveal">She asked me to be her primary carer. For the next eight months I looked after her — I did everything I possibly could, while watching her die. On the 22nd of February, she passed away while I was holding her hand.</p>
+    <p class="reveal">In that time, I recorded conversations with her — stories, memories, moments I knew I wanted to keep, and that I wanted my daughter to have one day. I still have them. I can still hear her voice. And I know exactly what that's worth, because not long ago a friend told me she'd had recordings of her own father, who died fifteen years ago — and a phone update wiped them. They're simply gone. There's no getting them back.</p>
+    <p class="reveal">That's the moment this stopped being an idea and became the thing I had to build. Because almost no one has these recordings — and the few who do can lose them to something as ordinary as a software update.</p>
+    <p class="reveal">So Trudy captures the life stories of older people — by phone. There's no app, no screen, no login, nothing to learn. The phone rings on the same day each week, an AI interviewer asks gentle questions, and the conversation is recorded, transcribed, and kept forever in a private family vault — safe, backed up, and not sitting on someone's phone waiting to vanish.</p>
+    <p class="reveal">The person paying is the adult child — the <em>Curator</em>. The person on the phone is their parent — the <em>Storyteller</em> — who has to do nothing but answer a ringing phone and talk. The voice is preserved exactly as it is. The accent, the pauses, the way they tell a story they've told a hundred times.</p>
+    <p class="reveal">But the recording is only half of it. The call comes at the same time every week, and that rhythm matters. It becomes something to look forward to — a standing appointment, a familiar voice, a reason to reach back into your life and tell it to someone who's listening. From what I understand, routine and a sense of purpose genuinely matter for older people's wellbeing, especially for those who are isolated. So Trudy isn't only preserving a life for the family who comes after — it's giving the person living it a bit of connection and meaning while they're still here to feel it.</p>
+    <p class="reveal">I bought trudy.org a few years ago. I didn't know yet what it would become — only that the name was special, and that one day it would be used for something that mattered. This is it.</p>
+    <p class="reveal" style="font-size:0.96rem;color:var(--soft);margin-top:30px;"><strong style="color:var(--ink);font-weight:600;">A note on how it's built.</strong> The thing that makes a service like this work is a voice that feels human enough that an older person forgets they're talking to a machine and just talks. The benchmark there is Sesame's Maya. Their full assistant is proprietary, but the model underneath it — CSM — is open and commercially usable under an Apache 2.0 licence. CSM handles the voice; it doesn't think, so you pair it with a language model for the actual interview. It isn't built for fast, real-time back-and-forth yet — but Trudy doesn't need that. A gentle, unhurried weekly conversation is exactly the kind of pace it's suited to. So the path is real: an open voice layer, a language model guiding the questions, and the call itself wrapped in telephony so the Storyteller needs nothing but a phone that rings.</p>
+    <p class="pull reveal">It's named after my mother, Trudy — a nurse and midwife. No family should have to lose someone's voice twice.</p>
   </div>
 </section>
 
 <!-- APPS -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">The things I've built on the side</p>
-    <h2>Small problems, shipped real</h2>
-    <p class="muted">I don't build apps to fill a portfolio. Each one started as a real moment of friction — usually one I was standing in. Self-taught, built from my phone, deployed live.</p>
+    <p class="eyebrow reveal">The things I've built on the side</p>
+    <h2 class="reveal d1">Small problems, shipped real</h2>
+    <p class="muted reveal d1" style="margin-bottom:34px;">I don't build apps to fill a portfolio. Each one started as a real moment of friction — usually one I was standing in. Self-taught, built from my phone, deployed live.</p>
 
-    <div class="app">
-      <p class="url">holyshit.app</p>
+    <div class="app reveal">
+      <p class="url"><a href="https://holyshit.app" target="_blank" rel="noopener">holyshit.app →</a></p>
       <h3>HolyShit.app</h3>
       <p class="why"><span class="why-label">Why I built it: </span>Because finding a clean public toilet when you've got kids in the car and someone's about to lose it is genuinely hard — and every existing tool is a buried government spreadsheet or a Google pin with no information. So I made the best free toilet finder in Australia, gave it a gospel-meets-Michelin-Guide sense of humour, and put it out with no ads, no accounts, no catch.</p>
     </div>
 
-    <div class="app">
-      <p class="url">generalboarding.com</p>
+    <div class="app reveal">
+      <p class="url"><a href="https://generalboarding.com" target="_blank" rel="noopener">generalboarding.com →</a></p>
       <h3>General Boarding</h3>
-      <p class="why"><span class="why-label">Why I built it: </span>The app that hears your boarding call so you don't have to. I was standing at a gate watching the priority/general boarding signs and thinking about how much quiet anxiety there is in flying — straining to catch a garbled announcement, terrified of missing it. Every existing tool is locked to one airline or one airport. This is the airline-agnostic, anxiety-first layer a traveller keeps across every trip, worldwide. Gate seven, the day I bought it. Seven was Mum's birthday.</p>
+      <p class="why"><span class="why-label">Why I built it: </span>The app that hears your boarding call so you don't have to. I was standing at a gate watching the priority and general boarding signs, thinking about how much quiet anxiety there is in flying — straining to catch a garbled announcement, terrified of missing it. Every existing tool is locked to one airline or one airport. This is the airline-agnostic, anxiety-first layer a traveller keeps across every trip, worldwide. Gate seven, the day I bought it. Seven was Mum's birthday.</p>
     </div>
 
-    <div class="app">
-      <p class="url">saygday.ai</p>
+    <div class="app reveal">
+      <p class="url"><a href="https://saygday.ai" target="_blank" rel="noopener">saygday.ai →</a></p>
       <h3>Say G'day</h3>
-      <p class="why"><span class="why-label">Why I built it: </span>An AI chat assistant for Australian small businesses, trained on their own website, answering customer questions 24/7 with every conversation saved to a simple dashboard. It started because a friend running a Christmas shop couldn't be at her desk at 10pm on a Sunday when someone wanted to know if she was open tomorrow. Now her chatbot answers for her. A front desk that never closes, for the price of a coffee a day.</p>
-    </div>
-
-    <div class="app">
-      <p class="url">santasecret.com.au</p>
-      <h3>Santa's Secret</h3>
-      <p class="why"><span class="why-label">Why I built it: </span>A bespoke Christmas decoration shop in Bungendore, run by Kim. This one's simple — a mate needed a proper web presence and a chatbot named Holly to handle out-of-hours questions, so I made her one. Client work, real and live. Proof the studio tools work for someone other than me.</p>
+      <p class="why"><span class="why-label">Why I built it: </span>An AI chat assistant for Australian small businesses, trained on their own website, answering customer questions 24/7 with every conversation saved to a simple dashboard. It started because a friend running a Christmas shop couldn't be at her desk at 10pm on a Sunday when someone wanted to know if she was open tomorrow. Now her chatbot answers for her — a front desk that never closes, for the price of a coffee a day.</p>
     </div>
   </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- GET TO KNOW ME -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">If you want the real me</p>
-    <h2>Not another website</h2>
-    <p class="muted">The truest things I've made aren't apps. If you want to know who's behind all this, start here.</p>
-    <ul class="links">
+    <p class="eyebrow reveal">If you want the real me</p>
+    <h2 class="reveal d1">The things I make when no one's asking</h2>
+    <p class="reveal d1">I've written poetry for forty years. Recently I turned it into music — atmospheric electronic pieces I release as <em>Vienna Park</em>.</p>
+    <p class="reveal">Two years ago I got sober. I tie it to my mother's birthday, the 7th of April — so each year on that day I remember her, and I'm quietly proud of myself for stopping. In that first year, to stay distracted and to finally do something I'd always meant to, I wrote a book: <em>The Reset</em>. I started it on the 7th of April and finished it on the 7th of April a year later. A dozen publishers passed on it. I wasn't going to let that be the end of it, so I published it myself on Amazon.</p>
+    <p class="pull reveal">In the year 2607, reality is programmable. But memory is still painfully human.</p>
+    <p class="reveal">It follows Josh Miller — once a renowned terraformer, now shelving rare books beneath a Berlin scarred by climate collapse and draped in augmented illusions. He's haunted by fragments of a past he can't quite remember and a woman he's never met yet somehow loves. When "flickers" of impossible memories start fracturing his world, he's pulled into a question he can't escape: in a place where consciousness itself can be programmed, how do you know if your choices — even your love — are truly your own? Josh's flickers are woven from my own lived experience, which is what gives them their pulse. It's Book One of the TRUDY Trilogy — her name carries on there too.</p>
+    <ul class="links reveal d2">
       <li>
         <span><span class="label">Vienna Park</span><br><span class="sub">Atmospheric electronic music, written from my own poetry</span></span>
-        <a href="https://open.spotify.com/artist/2vP7XH11A1EhSJnteoeJfT" target="_blank" rel="noopener">Spotify →</a>
+        <a class="go" href="https://open.spotify.com/artist/2vP7XH11A1EhSJnteoeJfT" target="_blank" rel="noopener">Spotify →</a>
       </li>
       <li>
-        <span><span class="label">The Reset</span><br><span class="sub">Book One of the TRUDY Trilogy — self-published. Her name carries on.</span></span>
-        <a href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" rel="noopener">Amazon →</a>
+        <span><span class="label">The Reset</span><br><span class="sub">Book One of the TRUDY Trilogy — self-published</span></span>
+        <a class="go" href="https://www.amazon.com.au/dp/B0DBX6KXB8" target="_blank" rel="noopener">Amazon →</a>
       </li>
     </ul>
   </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- ABOUT -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">A little background</p>
-    <h2>The short version</h2>
-    <p>Twenty-plus years in the Australian Public Service — Defence, Finance, COMCAR. I drove Canberra's light rail. I built a Canberra history community on Facebook that reached 80,000 people before a local media company acquired it — so I started another, Lost. Canberra, now just past 2,000 and growing. I like building communities. I like helping people. I've written poetry for forty years, released music, published a novel, and shipped more than a dozen live apps — all self-taught, most of it from a phone.</p>
-    <p>Two years sober. I cared for my mother through her last eight months. The work I'm proudest of all points the same direction: holding onto the things that quietly vanish. Trudy is where that finally became a business.</p>
+    <p class="eyebrow reveal">A little background</p>
+    <h2 class="reveal d1">The short version</h2>
+    <p class="reveal d1">Twenty-plus years in the Australian Public Service — Defence, Finance, COMCAR. I drove Canberra's light rail. I built a Canberra history community on Facebook that reached 80,000 people before a local media company acquired it — so I started another, Lost. Canberra, now just past 2,000 and growing. I like building communities. I like helping people. I've written poetry for forty years, released music, published a novel, and shipped more than a dozen live apps — all self-taught, most of it from a phone.</p>
+    <p class="reveal">Two years sober. I cared for my mother through her last eight months. The work I'm proudest of all points the same direction: holding onto the things that quietly vanish. Trudy is where that finally became a business.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p class="sig">Thanks for taking the time.</p>
-    <p style="margin-top:10px;">Jay Bergmann · Canberra, Australia · <a href="mailto:jay@jaybergmann.com">jay@jaybergmann.com</a></p>
+    <p class="sig reveal">Thanks for taking the time.</p>
+    <p class="reveal">Jay Bergmann · Canberra, Australia · <a href="mailto:jay@jaybergmann.com">jay@jaybergmann.com</a></p>
   </div>
 </footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Gentle parallax on hero
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    if(y < 700 && hero){ hero.style.transform = 'translateY(' + (y * 0.12) + 'px)'; hero.style.opacity = Math.max(0, 1 - y/600); }
+  }, {passive:true});
+</script>
 
 </body>
 </html>
