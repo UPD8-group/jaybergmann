@@ -37,6 +37,9 @@
   .brand{font-family:'Newsreader',serif;font-weight:600;font-size:1.3rem;letter-spacing:-0.01em;color:var(--ink)}
   .nav-cta{font-family:'Inter';font-weight:600;font-size:.9rem;background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:100px;transition:transform .2s}
   .nav-cta:hover{transform:translateY(-2px);color:var(--bg)}
+  .nav-right{display:flex;align-items:center;gap:20px}
+  .nav-airtree{font-size:.82rem;font-weight:500;color:var(--soft);letter-spacing:.02em}
+  .nav-airtree:hover{color:var(--gold)}
 
   /* HERO */
   .hero{padding:100px 0 70px}
@@ -116,7 +119,10 @@
 <nav>
   <div class="nav-in">
     <a href="#top" class="brand">Jay Bergmann</a>
-    <a href="#contact" class="nav-cta">Start a project</a>
+    <div class="nav-right">
+      <a href="/airtree-2026/" class="nav-airtree">Airtree Frontier →</a>
+      <a href="#contact" class="nav-cta">Start a project</a>
+    </div>
   </div>
 </nav>
 
